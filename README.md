@@ -12,6 +12,10 @@
  Rational rose下载（仅限内部学习使用，勿做商业用途）：
  
  	链接://pan.baidu.com/s/1o7c5h02 密码:a6wa
+ 	
+ MS visio下载（仅限内部学习使用，勿做商业用途）：
+ 
+ 	链接：http://pan.baidu.com/s/1miF5bdQ 密码：4ylu
 
 2016.03.29 高超更新:
 
