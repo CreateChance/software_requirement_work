@@ -14,6 +14,10 @@
  MS visio下载（仅限内部学习使用，勿做商业用途）：
  
  	链接：http://pan.baidu.com/s/1gf6lL3X 密码：hvx9
+ 
+ git windows（32bit）下载：
+ 
+ 	链接: http://pan.baidu.com/s/1o8y6cmm 密码: mi7x
 
 2016.04.07 高超更新
 
