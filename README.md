@@ -10,6 +10,10 @@
  Rational rose下载（仅限内部学习使用，勿做商业用途）：
  
  	链接://pan.baidu.com/s/1o7c5h02 密码:a6wa
+ 	
+ RSA建模软件（仅限内部学习使用，勿做商业用途）：
+ 
+ 	链接：http://pan.baidu.com/s/1c2ykUUs 密码：11bk
  
  MS visio下载（仅限内部学习使用，勿做商业用途）：
  
