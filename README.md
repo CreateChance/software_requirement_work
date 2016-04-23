@@ -11,6 +11,10 @@
  
  	链接://pan.baidu.com/s/1o7c5h02 密码:a6wa
  	
+ Astah一个轻量级的UML建模设计软件（简单强大）：
+ 
+ 	下载链接：http://astah.net/download
+ 	
  RSA建模软件（仅限内部学习使用，勿做商业用途）：
  
  	链接：http://pan.baidu.com/s/1c2ykUUs 密码：11bk
