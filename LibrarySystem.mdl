@@ -79,7 +79,7 @@
 |The Use Case View organizes the Use-Case Model and the optional Business Use-Case Model.
 |
 	
-	stereotype 	"Business Use Case Model"
+	stereotype 	"Business Analysis Model"
 	exportControl 	"Public"
 	global     	TRUE
 	logical_models 	(list unit_reference_list
@@ -105,7 +105,17 @@
 		    (object Inheritance_Relationship
 			quid       	"570357F3007E"
 			supplier   	"Use Case View::读者"
-			quidu      	"5703459F01AD")))
+			quidu      	"5703459F01AD"))
+		visible_modules 	(list dependency_list
+		    (object Dependency_Relationship
+			quid       	"571A78F000EF"
+			supplier   	"Use Case View::系统管理员权限"
+			quidu      	"571A78130026"))
+		used_nodes 	(list uses_relationship_list
+		    (object Uses_Relationship
+			quid       	"571A71EB0298"
+			supplier   	"Use Case View::图书管理员"
+			quidu      	"570356C10005")))
 	    (object Class "NewClass"
 		quid       	"57034A1402E4"
 		stereotype 	"Actor")
@@ -2223,7 +2233,7 @@
 		    (object Dependency_Relationship
 			quid       	"5703618E021E"
 			stereotype 	"include"
-			supplier   	"Use Case View::催还图书"
+			supplier   	"Use Case View::手动催还图书"
 			quidu      	"570360C80129")
 		    (object Dependency_Relationship
 			quid       	"57036191010A"
@@ -2234,7 +2244,12 @@
 			quid       	"5703619D00FD"
 			stereotype 	"include"
 			supplier   	"Use Case View::馆际借阅图书"
-			quidu      	"5703611800DE")))
+			quidu      	"5703611800DE")
+		    (object Dependency_Relationship
+			quid       	"5731EBCE0236"
+			stereotype 	"include"
+			supplier   	"Use Case View::自动催还图书"
+			quidu      	"5731EBBE01A3")))
 	    (object UseCase "管理服务系统"
 		quid       	"570357310089"
 		visible_modules 	(list dependency_list
@@ -2845,7 +2860,7 @@
 			    max_height 	28350
 			    max_width  	21600
 			    origin_x   	0
-			    origin_y   	17
+			    origin_y   	16
 			    items      	(list diagram_item_list
 				(object Swimlane "读者" @108
 				    line_color 	3342489
@@ -5848,13 +5863,1105 @@
 					(774, 363))
 				    line_style 	0))))))
 	    (object UseCase "配置用户权限"
-		quid       	"57035FFC0342")
+		quid       	"57035FFC0342"
+		logical_presentations 	(list unit_reference_list
+		    (object UseCaseDiagram "NewDiagram20"
+			quid       	"571A77C901AC"
+			title      	"NewDiagram20"
+			zoom       	100
+			max_height 	28350
+			max_width  	21600
+			origin_x   	225
+			origin_y   	0
+			items      	(list diagram_item_list
+			    (object UseCaseView "Use Case View::系统管理员权限" @260
+				location   	(1616, 352)
+				font       	(object Font
+				    size       	8
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@260
+				    location   	(1616, 544)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	630
+				    justify    	0
+				    label      	"系统管理员权限")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"571A78130026"
+				width      	546
+				height     	226)
+			    (object ClassView "Class" "Use Case View::系统管理员" @261
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(544, 352)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@261
+				    location   	(544, 512)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	325
+				    justify    	0
+				    label      	"系统管理员")
+				icon       	"Actor"
+				icon_style 	"Icon"
+				line_color 	3342489
+				quidu      	"570345C00219"
+				annotation 	8
+				autoResize 	TRUE)
+			    (object DependencyView "" @262
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"571A78F000EF"
+				client     	@261
+				supplier   	@260
+				vertices   	(list Points
+				    (601, 352)
+				    (1351, 352))
+				line_style 	0)
+			    (object AssociationViewNew "" @263
+				location   	(976, 352)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"571A78FE003B"
+				roleview_list 	(list RoleViews
+				    (object RoleView "" @264
+					Parent_View 	@263
+					location   	(432, 0)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"571A79000211"
+					client     	@263
+					supplier   	@260
+					vertices   	(list Points
+					    (976, 352)
+					    (1351, 352))
+					line_style 	0)
+				    (object RoleView "" @265
+					Parent_View 	@263
+					location   	(432, 0)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"571A79000213"
+					client     	@263
+					supplier   	@261
+					vertices   	(list Points
+					    (976, 352)
+					    (601, 352))
+					line_style 	0)))
+			    (object UseCaseView "Use Case View::图书管理员权限" @266
+				location   	(1632, 656)
+				font       	(object Font
+				    size       	8
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@266
+				    location   	(1632, 849)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	630
+				    justify    	0
+				    label      	"图书管理员权限")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"571A78270256"
+				width      	514
+				height     	228)
+			    (object ClassView "Class" "Use Case View::图书管理员" @267
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(544, 672)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@267
+				    location   	(544, 832)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	325
+				    justify    	0
+				    label      	"图书管理员")
+				icon       	"Actor"
+				icon_style 	"Icon"
+				line_color 	3342489
+				quidu      	"570356C10005"
+				annotation 	8
+				autoResize 	TRUE)
+			    (object AssociationViewNew "" @268
+				location   	(991, 661)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"571A790602A7"
+				roleview_list 	(list RoleViews
+				    (object RoleView "" @269
+					Parent_View 	@268
+					location   	(447, -11)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"571A790901FD"
+					client     	@268
+					supplier   	@266
+					vertices   	(list Points
+					    (991, 661)
+					    (1382, 654))
+					line_style 	0)
+				    (object RoleView "" @270
+					Parent_View 	@268
+					location   	(447, -11)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"571A790901FF"
+					client     	@268
+					supplier   	@267
+					vertices   	(list Points
+					    (991, 661)
+					    (601, 668))
+					line_style 	0)))
+			    (object UseCaseView "Use Case View::普通用户权限" @271
+				location   	(1616, 1008)
+				font       	(object Font
+				    size       	8
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@271
+				    location   	(1616, 1201)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	630
+				    justify    	0
+				    label      	"普通用户权限")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"571A782A00C6"
+				width      	546
+				height     	228)
+			    (object ClassView "Class" "Use Case View::普通用户" @272
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(576, 1024)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@272
+				    location   	(576, 1184)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	325
+				    justify    	0
+				    label      	"普通用户")
+				icon       	"Actor"
+				icon_style 	"Icon"
+				line_color 	3342489
+				quidu      	"5703457C01D5"
+				annotation 	8
+				autoResize 	TRUE)
+			    (object AssociationViewNew "" @273
+				location   	(990, 1014)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"571A79680050"
+				roleview_list 	(list RoleViews
+				    (object RoleView "" @274
+					Parent_View 	@273
+					location   	(414, -10)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"571A79690370"
+					client     	@273
+					supplier   	@271
+					vertices   	(list Points
+					    (990, 1014)
+					    (1346, 1006))
+					line_style 	0)
+				    (object RoleView "" @275
+					Parent_View 	@273
+					location   	(414, -10)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"571A79690372"
+					client     	@273
+					supplier   	@272
+					vertices   	(list Points
+					    (990, 1014)
+					    (633, 1020))
+					line_style 	0)))
+			    (object NoteView @276
+				location   	(2080, 336)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@276
+				    location   	(1942, 276)
+				    fill_color 	13434879
+				    nlines     	2
+				    max_width  	240
+				    justify    	1
+				    label      	"管理员权限是最高权限，可以修改数据库中的数据")
+				line_color 	3342489
+				fill_color 	13434879
+				width      	300
+				height     	132)
+			    (object NoteView @277
+				location   	(2096, 656)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@277
+				    location   	(1958, 596)
+				    fill_color 	13434879
+				    nlines     	2
+				    max_width  	240
+				    justify    	1
+				    label      	"对数据库拥有查询和部分修改的权限")
+				line_color 	3342489
+				fill_color 	13434879
+				width      	300
+				height     	132)
+			    (object NoteView @278
+				location   	(2096, 1008)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@278
+				    location   	(1958, 948)
+				    fill_color 	13434879
+				    nlines     	2
+				    max_width  	240
+				    justify    	1
+				    label      	"对数据库只有查询的权限")
+				line_color 	3342489
+				fill_color 	13434879
+				width      	300
+				height     	132)))))
 	    (object UseCase "管理工作站"
-		quid       	"5703600A027A")
+		quid       	"5703600A027A"
+		statemachine 	(object State_Machine "State/Activity Model21"
+		    quid       	"571A7E9E0035"
+		    states     	(list States
+			(object State "用户"
+			    quid       	"571A800902BF"
+			    type       	"StartState")
+			(object State "监控图书库存数量"
+			    quid       	"571A80220125"
+			    type       	"Normal")
+			(object State "监控图书借还比例"
+			    quid       	"571A813B0023"
+			    type       	"Normal")
+			(object State "监控系统运行状态"
+			    quid       	"571A816601B3"
+			    type       	"Normal")
+			(object State "按照工作站反馈解决问题"
+			    quid       	"571A81DB0069"
+			    type       	"EndState"))
+		    partitions 	(list Partitions
+			(object Partition "用户"
+			    quid       	"571A7F6802C9"
+			    persistence 	"Transient"
+			    creationObj 	FALSE
+			    multi      	FALSE)
+			(object Partition "管理工作站"
+			    quid       	"571A7FD90193"
+			    persistence 	"Transient"
+			    creationObj 	FALSE
+			    multi      	FALSE))
+		    objects    	(list Objects)
+		    transitions 	(list transition_list
+			(object State_Transition
+			    quid       	"571A819F0195"
+			    supplier   	"Use Case View::管理工作站::State/Activity Model21::监控图书库存数量"
+			    supplier_quidu 	"571A80220125"
+			    client     	"Use Case View::管理工作站::State/Activity Model21::用户"
+			    client_quidu 	"571A800902BF"
+			    sendEvent  	(object sendEvent
+				quid       	"571A819F0198"))
+			(object State_Transition
+			    quid       	"571A81A9039D"
+			    supplier   	"Use Case View::管理工作站::State/Activity Model21::监控图书借还比例"
+			    supplier_quidu 	"571A813B0023"
+			    client     	"Use Case View::管理工作站::State/Activity Model21::监控图书库存数量"
+			    client_quidu 	"571A80220125"
+			    sendEvent  	(object sendEvent
+				quid       	"571A81A903A0"))
+			(object State_Transition
+			    quid       	"571A81B80005"
+			    supplier   	"Use Case View::管理工作站::State/Activity Model21::监控图书借还比例"
+			    supplier_quidu 	"571A813B0023"
+			    client     	"Use Case View::管理工作站::State/Activity Model21::监控图书借还比例"
+			    client_quidu 	"571A813B0023"
+			    sendEvent  	(object sendEvent
+				quid       	"571A81B80008"))
+			(object State_Transition
+			    quid       	"571A81D7004B"
+			    supplier   	"Use Case View::管理工作站::State/Activity Model21::监控系统运行状态"
+			    supplier_quidu 	"571A816601B3"
+			    client     	"Use Case View::管理工作站::State/Activity Model21::监控图书借还比例"
+			    client_quidu 	"571A813B0023"
+			    sendEvent  	(object sendEvent
+				quid       	"571A81D7004E"))
+			(object State_Transition
+			    quid       	"571A81E903C5"
+			    supplier   	"Use Case View::管理工作站::State/Activity Model21::按照工作站反馈解决问题"
+			    supplier_quidu 	"571A81DB0069"
+			    client     	"Use Case View::管理工作站::State/Activity Model21::监控系统运行状态"
+			    client_quidu 	"571A816601B3"
+			    sendEvent  	(object sendEvent
+				quid       	"571A81E903C8")))
+		    objectflows 	(list objectflow_list)
+		    statediagrams 	(list StateDiagrams
+			(object ActivityDiagram "NewDiagram21"
+			    quid       	"571A7E9E0036"
+			    title      	"NewDiagram21"
+			    zoom       	100
+			    max_height 	28350
+			    max_width  	21600
+			    origin_x   	0
+			    origin_y   	0
+			    items      	(list diagram_item_list
+				(object Swimlane "用户" @279
+				    line_color 	3342489
+				    quidu      	"571A7F6802C9"
+				    width      	450)
+				(object StateView "StartState" "用户" @280
+				    Parent_View 	@279
+				    location   	(224, 256)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object SegLabel @281
+					Parent_View 	@280
+					location   	(266, 226)
+					font       	(object Font
+					    size       	9
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	TRUE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					nlines     	2
+					max_width  	600
+					justify    	1
+					label      	"用户"
+					pctDist    	1.000000
+					height     	0
+					orientation 	0)
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    quidu      	"571A800902BF"
+				    autoResize 	TRUE)
+				(object StateView "EndState" "按照工作站反馈解决问题" @282
+				    Parent_View 	@279
+				    location   	(240, 752)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object SegLabel @283
+					Parent_View 	@282
+					location   	(294, 710)
+					font       	(object Font
+					    size       	9
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	TRUE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					nlines     	2
+					max_width  	600
+					justify    	1
+					label      	"按照工作站反馈解决问题"
+					pctDist    	1.000000
+					height     	0
+					orientation 	0)
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    quidu      	"571A81DB0069"
+				    autoResize 	TRUE)
+				(object Swimlane "管理工作站" @284
+				    location   	(450, 0)
+				    line_color 	3342489
+				    quidu      	"571A7FD90193"
+				    width      	450)
+				(object StateView "Normal" "监控图书库存数量" @285
+				    Parent_View 	@284
+				    location   	(660, 256)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object ItemLabel
+					Parent_View 	@285
+					location   	(660, 242)
+					fill_color 	13434879
+					anchor_loc 	1
+					nlines     	2
+					max_width  	204
+					justify    	0
+					label      	"监控图书库存数量")
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    fill_color 	13434879
+				    quidu      	"571A80220125"
+				    height     	134
+				    autoResize 	TRUE)
+				(object TransView "" @286
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"571A819F0195"
+				    client     	@280
+				    supplier   	@285
+				    vertices   	(list Points
+					(254, 256)
+					(510, 256))
+				    line_style 	0
+				    x_offset   	FALSE)
+				(object StateView "Normal" "监控图书借还比例" @287
+				    Parent_View 	@284
+				    location   	(660, 496)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object ItemLabel
+					Parent_View 	@287
+					location   	(660, 482)
+					fill_color 	13434879
+					anchor_loc 	1
+					nlines     	2
+					max_width  	204
+					justify    	0
+					label      	"监控图书借还比例")
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    fill_color 	13434879
+				    quidu      	"571A813B0023"
+				    height     	134
+				    autoResize 	TRUE)
+				(object TransView "" @288
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"571A81A9039D"
+				    client     	@285
+				    supplier   	@287
+				    vertices   	(list Points
+					(660, 323)
+					(660, 429))
+				    line_style 	0
+				    x_offset   	FALSE)
+				(object StateView "Normal" "监控系统运行状态" @289
+				    Parent_View 	@284
+				    location   	(660, 736)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object ItemLabel
+					Parent_View 	@289
+					location   	(660, 722)
+					fill_color 	13434879
+					anchor_loc 	1
+					nlines     	2
+					max_width  	204
+					justify    	0
+					label      	"监控系统运行状态")
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    fill_color 	13434879
+				    quidu      	"571A816601B3"
+				    height     	134
+				    autoResize 	TRUE)
+				(object TransView "" @290
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"571A81D7004B"
+				    client     	@287
+				    supplier   	@289
+				    vertices   	(list Points
+					(660, 563)
+					(660, 669))
+				    line_style 	0
+				    x_offset   	FALSE)
+				(object Swimlane "" @291
+				    location   	(900, 0)
+				    line_color 	3342489
+				    width      	450)
+				(object TransView "" @292
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"571A81E903C5"
+				    client     	@289
+				    supplier   	@282
+				    vertices   	(list Points
+					(510, 741)
+					(282, 750))
+				    line_style 	0
+				    x_offset   	FALSE))))))
 	    (object UseCase "备份数据库"
-		quid       	"5703602D00EA")
+		quid       	"5703602D00EA"
+		statemachine 	(object State_Machine "State/Activity Model22"
+		    quid       	"571A8AA10186"
+		    states     	(list States
+			(object State "生产数据"
+			    quid       	"571A8BAB00D3"
+			    type       	"Normal")
+			(object State "备份到备份数据库的数据"
+			    quid       	"571A8BBF02E5"
+			    type       	"EndState")
+			(object State "自动备份"
+			    quid       	"5732A4140048"
+			    type       	"Normal")
+			(object State "手动备份"
+			    quid       	"5732A4C70268"
+			    type       	"Normal"))
+		    partitions 	(list Partitions
+			(object Partition "生产数据库"
+			    quid       	"571A8AAC0032"
+			    persistence 	"Transient"
+			    creationObj 	FALSE
+			    multi      	FALSE)
+			(object Partition "备份数据库"
+			    quid       	"571A8AB901D6"
+			    persistence 	"Transient"
+			    creationObj 	FALSE
+			    multi      	FALSE)
+			(object Partition "备份方式"
+			    quid       	"5732A3BC029D"
+			    persistence 	"Transient"
+			    creationObj 	FALSE
+			    multi      	FALSE))
+		    objects    	(list Objects)
+		    transitions 	(list transition_list
+			(object State_Transition
+			    quid       	"571A8BC80047"
+			    supplier   	"Use Case View::备份数据库::State/Activity Model22::备份到备份数据库的数据"
+			    supplier_quidu 	"571A8BBF02E5"
+			    client     	"Use Case View::备份数据库::State/Activity Model22::生产数据"
+			    client_quidu 	"571A8BAB00D3"
+			    sendEvent  	(object sendEvent
+				quid       	"571A8BC8004A"))
+			(object State_Transition
+			    quid       	"5732A54D0114"
+			    supplier   	"Use Case View::备份数据库::State/Activity Model22::自动备份"
+			    supplier_quidu 	"5732A4140048"
+			    client     	"Use Case View::备份数据库::State/Activity Model22::生产数据"
+			    client_quidu 	"571A8BAB00D3"
+			    sendEvent  	(object sendEvent
+				quid       	"5732A54D0117"))
+			(object State_Transition
+			    quid       	"5732A56200FC"
+			    supplier   	"Use Case View::备份数据库::State/Activity Model22::手动备份"
+			    supplier_quidu 	"5732A4C70268"
+			    client     	"Use Case View::备份数据库::State/Activity Model22::生产数据"
+			    client_quidu 	"571A8BAB00D3"
+			    sendEvent  	(object sendEvent
+				quid       	"5732A56200FF"))
+			(object State_Transition
+			    quid       	"5732A57302B5"
+			    supplier   	"Use Case View::备份数据库::State/Activity Model22::备份到备份数据库的数据"
+			    supplier_quidu 	"571A8BBF02E5"
+			    client     	"Use Case View::备份数据库::State/Activity Model22::自动备份"
+			    client_quidu 	"5732A4140048"
+			    sendEvent  	(object sendEvent
+				quid       	"5732A57302B8"))
+			(object State_Transition
+			    quid       	"5732A57C00ED"
+			    supplier   	"Use Case View::备份数据库::State/Activity Model22::备份到备份数据库的数据"
+			    supplier_quidu 	"571A8BBF02E5"
+			    client     	"Use Case View::备份数据库::State/Activity Model22::手动备份"
+			    client_quidu 	"5732A4C70268"
+			    sendEvent  	(object sendEvent
+				quid       	"5732A57C00F0")))
+		    objectflows 	(list objectflow_list)
+		    statediagrams 	(list StateDiagrams
+			(object ActivityDiagram "NewDiagram22"
+			    quid       	"571A8AA10188"
+			    title      	"NewDiagram22"
+			    zoom       	100
+			    max_height 	28350
+			    max_width  	21600
+			    origin_x   	0
+			    origin_y   	0
+			    items      	(list diagram_item_list
+				(object Swimlane "生产数据库" @293
+				    line_color 	3342489
+				    quidu      	"571A8AAC0032"
+				    width      	450)
+				(object StateView "Normal" "生产数据" @294
+				    Parent_View 	@293
+				    location   	(210, 592)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object ItemLabel
+					Parent_View 	@294
+					location   	(210, 578)
+					fill_color 	13434879
+					anchor_loc 	1
+					nlines     	2
+					max_width  	204
+					justify    	0
+					label      	"生产数据")
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    fill_color 	13434879
+				    quidu      	"571A8BAB00D3"
+				    height     	134
+				    autoResize 	TRUE)
+				(object Swimlane "备份方式" @295
+				    location   	(450, 0)
+				    line_color 	3342489
+				    quidu      	"5732A3BC029D"
+				    width      	450)
+				(object StateView "Normal" "自动备份" @296
+				    Parent_View 	@295
+				    location   	(660, 336)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object ItemLabel
+					Parent_View 	@296
+					location   	(660, 322)
+					fill_color 	13434879
+					anchor_loc 	1
+					nlines     	2
+					max_width  	204
+					justify    	0
+					label      	"自动备份")
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    fill_color 	13434879
+				    quidu      	"5732A4140048"
+				    height     	134
+				    autoResize 	TRUE)
+				(object TransView "" @297
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"5732A54D0114"
+				    client     	@294
+				    supplier   	@296
+				    vertices   	(list Points
+					(327, 525)
+					(542, 403))
+				    line_style 	0
+				    x_offset   	FALSE)
+				(object StateView "Normal" "手动备份" @298
+				    Parent_View 	@295
+				    location   	(660, 832)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object ItemLabel
+					Parent_View 	@298
+					location   	(660, 818)
+					fill_color 	13434879
+					anchor_loc 	1
+					nlines     	2
+					max_width  	204
+					justify    	0
+					label      	"手动备份")
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    fill_color 	13434879
+				    quidu      	"5732A4C70268"
+				    height     	134
+				    autoResize 	TRUE)
+				(object TransView "" @299
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"5732A56200FC"
+				    client     	@294
+				    supplier   	@298
+				    vertices   	(list Points
+					(335, 658)
+					(534, 765))
+				    line_style 	0
+				    x_offset   	FALSE)
+				(object NoteView @300
+				    Parent_View 	@295
+				    location   	(656, 128)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object ItemLabel
+					Parent_View 	@300
+					location   	(518, 40)
+					fill_color 	13434879
+					nlines     	3
+					max_width  	240
+					justify    	1
+					label      	"每天晚上12:00进行备份，备份方式为增量")
+				    line_color 	3342489
+				    fill_color 	13434879
+				    width      	300
+				    height     	188)
+				(object NoteView @301
+				    Parent_View 	@295
+				    location   	(672, 1056)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object ItemLabel
+					Parent_View 	@301
+					location   	(534, 996)
+					fill_color 	13434879
+					nlines     	2
+					max_width  	240
+					justify    	1
+					label      	"使用Microsoft sql server进行备份")
+				    line_color 	3342489
+				    fill_color 	13434879
+				    width      	300
+				    height     	132)
+				(object Swimlane "备份数据库" @302
+				    location   	(900, 0)
+				    line_color 	3342489
+				    quidu      	"571A8AB901D6"
+				    width      	450)
+				(object StateView "EndState" "备份到备份数据库的数据" @303
+				    Parent_View 	@302
+				    location   	(1106, 592)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object SegLabel @304
+					Parent_View 	@303
+					location   	(1160, 550)
+					font       	(object Font
+					    size       	9
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	TRUE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					nlines     	2
+					max_width  	600
+					justify    	1
+					label      	"备份到备份数据库的数据"
+					pctDist    	1.000000
+					height     	0
+					orientation 	0)
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    quidu      	"571A8BBF02E5"
+				    autoResize 	TRUE)
+				(object TransView "" @305
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"5732A57302B5"
+				    client     	@296
+				    supplier   	@303
+				    vertices   	(list Points
+					(776, 402)
+					(1064, 567))
+				    line_style 	0
+				    x_offset   	FALSE)
+				(object TransView "" @306
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"5732A57C00ED"
+				    client     	@298
+				    supplier   	@303
+				    vertices   	(list Points
+					(784, 764)
+					(1064, 614))
+				    line_style 	0
+				    x_offset   	FALSE)
+				(object Swimlane "" @307
+				    location   	(1350, 0)
+				    line_color 	3342489
+				    width      	450))))))
 	    (object UseCase "恢复数据库"
-		quid       	"57036037018F")
+		quid       	"57036037018F"
+		statemachine 	(object State_Machine "State/Activity Model23"
+		    quid       	"571A8C1D0029"
+		    states     	(list States
+			(object State "备份数据"
+			    quid       	"571A8C48039A"
+			    type       	"Normal")
+			(object State "还原到生产数据库中的数据"
+			    quid       	"571A8C4C020A"
+			    type       	"EndState"))
+		    partitions 	(list Partitions
+			(object Partition "生产数据库"
+			    quid       	"571A8C230335"
+			    persistence 	"Transient"
+			    creationObj 	FALSE
+			    multi      	FALSE)
+			(object Partition "备份数据库"
+			    quid       	"571A8C25038F"
+			    persistence 	"Transient"
+			    creationObj 	FALSE
+			    multi      	FALSE))
+		    objects    	(list Objects)
+		    transitions 	(list transition_list
+			(object State_Transition
+			    quid       	"571A8C930200"
+			    supplier   	"Use Case View::恢复数据库::State/Activity Model23::还原到生产数据库中的数据"
+			    supplier_quidu 	"571A8C4C020A"
+			    client     	"Use Case View::恢复数据库::State/Activity Model23::备份数据"
+			    client_quidu 	"571A8C48039A"
+			    sendEvent  	(object sendEvent
+				quid       	"571A8C930203")))
+		    objectflows 	(list objectflow_list)
+		    statediagrams 	(list StateDiagrams
+			(object ActivityDiagram "NewDiagram23"
+			    quid       	"571A8C1D002B"
+			    title      	"NewDiagram23"
+			    zoom       	100
+			    max_height 	28350
+			    max_width  	21600
+			    origin_x   	0
+			    origin_y   	0
+			    items      	(list diagram_item_list
+				(object Swimlane "生产数据库" @308
+				    line_color 	3342489
+				    quidu      	"571A8C230335"
+				    width      	450)
+				(object StateView "EndState" "还原到生产数据库中的数据" @309
+				    Parent_View 	@308
+				    location   	(224, 672)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object SegLabel @310
+					Parent_View 	@309
+					location   	(278, 630)
+					font       	(object Font
+					    size       	9
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	TRUE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					nlines     	2
+					max_width  	600
+					justify    	1
+					label      	"还原到生产数据库中的数据"
+					pctDist    	1.000000
+					height     	0
+					orientation 	0)
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    quidu      	"571A8C4C020A"
+				    autoResize 	TRUE)
+				(object Swimlane "备份数据库" @311
+				    location   	(450, 0)
+				    line_color 	3342489
+				    quidu      	"571A8C25038F"
+				    width      	450)
+				(object StateView "Normal" "备份数据" @312
+				    Parent_View 	@311
+				    location   	(672, 672)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object ItemLabel
+					Parent_View 	@312
+					location   	(672, 658)
+					fill_color 	13434879
+					anchor_loc 	1
+					nlines     	2
+					max_width  	204
+					justify    	0
+					label      	"备份数据")
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    fill_color 	13434879
+				    quidu      	"571A8C48039A"
+				    height     	134
+				    autoResize 	TRUE)
+				(object Swimlane "" @313
+				    location   	(900, 0)
+				    line_color 	3342489
+				    width      	450)
+				(object TransView "" @314
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"571A8C930200"
+				    client     	@312
+				    supplier   	@309
+				    vertices   	(list Points
+					(522, 672)
+					(266, 672))
+				    line_style 	0
+				    x_offset   	FALSE))))))
 	    (object UseCase "查询借出图书"
 		quid       	"570360AE037A"
 		statemachine 	(object State_Machine "State/Activity Model9"
@@ -5930,19 +7037,19 @@
 			    origin_x   	0
 			    origin_y   	0
 			    items      	(list diagram_item_list
-				(object Swimlane "图书管理员" @260
+				(object Swimlane "图书管理员" @315
 				    line_color 	3342489
 				    quidu      	"570D0B7300D3"
 				    width      	504)
-				(object StateView "StartState" "$UNNAMED$23" @261
-				    Parent_View 	@260
+				(object StateView "StartState" "$UNNAMED$23" @316
+				    Parent_View 	@315
 				    location   	(245, 96)
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    quidu      	"570D0B8801CA"
 				    autoResize 	TRUE)
-				(object ActivityStateView "查询借出图书" @262
-				    Parent_View 	@260
+				(object ActivityStateView "查询借出图书" @317
+				    Parent_View 	@315
 				    location   	(248, 336)
 				    font       	(object Font
 					size       	9
@@ -5954,7 +7061,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@262
+					Parent_View 	@317
 					location   	(248, 337)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -5968,19 +7075,19 @@
 				    quidu      	"570D0B8B0040"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object TransView "" @263
+				(object TransView "" @318
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0B9A023A"
-				    client     	@261
-				    supplier   	@262
+				    client     	@316
+				    supplier   	@317
 				    vertices   	(list Points
 					(245, 126)
 					(247, 284))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object ActivityStateView "显示借出图书列表" @264
-				    Parent_View 	@260
+				(object ActivityStateView "显示借出图书列表" @319
+				    Parent_View 	@315
 				    location   	(256, 624)
 				    font       	(object Font
 					size       	9
@@ -5992,7 +7099,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@264
+					Parent_View 	@319
 					location   	(256, 625)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -6006,20 +7113,20 @@
 				    quidu      	"570D0BBA013C"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object StateView "EndState" "$UNNAMED$24" @265
-				    Parent_View 	@260
+				(object StateView "EndState" "$UNNAMED$24" @320
+				    Parent_View 	@315
 				    location   	(256, 944)
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    quidu      	"570D0BD403C1"
 				    autoResize 	TRUE)
-				(object Swimlane "系统" @266
+				(object Swimlane "系统" @321
 				    location   	(504, 0)
 				    line_color 	3342489
 				    quidu      	"570D0B7F01AA"
 				    width      	496)
-				(object ActivityStateView "检索数据库" @267
-				    Parent_View 	@266
+				(object ActivityStateView "检索数据库" @322
+				    Parent_View 	@321
 				    location   	(752, 336)
 				    font       	(object Font
 					size       	9
@@ -6031,7 +7138,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@267
+					Parent_View 	@322
 					location   	(752, 337)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -6045,45 +7152,45 @@
 				    quidu      	"570D0BA9005E"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object TransView "" @268
+				(object TransView "" @323
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0BB300BB"
-				    client     	@262
-				    supplier   	@267
+				    client     	@317
+				    supplier   	@322
 				    vertices   	(list Points
 					(419, 336)
 					(581, 336))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object TransView "" @269
+				(object TransView "" @324
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0BC603B8"
-				    client     	@267
-				    supplier   	@264
+				    client     	@322
+				    supplier   	@319
 				    vertices   	(list Points
 					(751, 388)
 					(750, 622)
 					(427, 623))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object Swimlane "" @270
+				(object Swimlane "" @325
 				    location   	(1000, 0)
 				    line_color 	3342489
 				    width      	450)
-				(object TransView "" @271
+				(object TransView "" @326
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0BD80206"
-				    client     	@264
-				    supplier   	@265
+				    client     	@319
+				    supplier   	@320
 				    vertices   	(list Points
 					(256, 677)
 					(256, 902))
 				    line_style 	0
 				    x_offset   	FALSE))))))
-	    (object UseCase "催还图书"
+	    (object UseCase "手动催还图书"
 		quid       	"570360C80129"
 		statemachine 	(object State_Machine "State/Activity Model10"
 		    quid       	"570D0BE70374"
@@ -6091,7 +7198,7 @@
 			(object State "$UNNAMED$25"
 			    quid       	"570D0C0203B6"
 			    type       	"StartState")
-			(object ActivityState "催还图书"
+			(object ActivityState "自动催还后，手动催还图书"
 			    quid       	"570D0C070025")
 			(object ActivityState "修改催还标识"
 			    quid       	"570D0C1C02B2")
@@ -6120,7 +7227,7 @@
 		    transitions 	(list transition_list
 			(object State_Transition
 			    quid       	"570D0C15029E"
-			    supplier   	"Use Case View::催还图书::State/Activity Model10::催还图书"
+			    supplier   	"Use Case View::手动催还图书::State/Activity Model10::自动催还后，手动催还图书"
 			    supplier_quidu 	"570D0C070025"
 			    client     	"$UNNAMED$25"
 			    client_quidu 	"570D0C0203B6"
@@ -6128,17 +7235,17 @@
 				quid       	"570D0C1502A1"))
 			(object State_Transition
 			    quid       	"570D0C3102FE"
-			    supplier   	"Use Case View::催还图书::State/Activity Model10::修改催还标识"
+			    supplier   	"Use Case View::手动催还图书::State/Activity Model10::修改催还标识"
 			    supplier_quidu 	"570D0C1C02B2"
-			    client     	"Use Case View::催还图书::State/Activity Model10::催还图书"
+			    client     	"Use Case View::手动催还图书::State/Activity Model10::自动催还后，手动催还图书"
 			    client_quidu 	"570D0C070025"
 			    sendEvent  	(object sendEvent
 				quid       	"570D0C310301"))
 			(object State_Transition
 			    quid       	"570D0C5901A5"
-			    supplier   	"Use Case View::催还图书::State/Activity Model10::读者提醒"
+			    supplier   	"Use Case View::手动催还图书::State/Activity Model10::读者提醒"
 			    supplier_quidu 	"570D0C3E02AA"
-			    client     	"Use Case View::催还图书::State/Activity Model10::修改催还标识"
+			    client     	"Use Case View::手动催还图书::State/Activity Model10::修改催还标识"
 			    client_quidu 	"570D0C1C02B2"
 			    sendEvent  	(object sendEvent
 				quid       	"570D0C5901A8"))
@@ -6146,7 +7253,7 @@
 			    quid       	"570D0C6801EA"
 			    supplier   	"$UNNAMED$26"
 			    supplier_quidu 	"570D0C6303D6"
-			    client     	"Use Case View::催还图书::State/Activity Model10::读者提醒"
+			    client     	"Use Case View::手动催还图书::State/Activity Model10::读者提醒"
 			    client_quidu 	"570D0C3E02AA"
 			    sendEvent  	(object sendEvent
 				quid       	"570D0C6801ED")))
@@ -6161,20 +7268,20 @@
 			    origin_x   	0
 			    origin_y   	0
 			    items      	(list diagram_item_list
-				(object Swimlane "图书管理员" @272
+				(object Swimlane "图书管理员" @327
 				    line_color 	3342489
 				    quidu      	"570D0BF20150"
 				    width      	504)
-				(object StateView "StartState" "$UNNAMED$25" @273
-				    Parent_View 	@272
+				(object StateView "StartState" "$UNNAMED$25" @328
+				    Parent_View 	@327
 				    location   	(240, 96)
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    quidu      	"570D0C0203B6"
 				    autoResize 	TRUE)
-				(object ActivityStateView "催还图书" @274
-				    Parent_View 	@272
-				    location   	(248, 384)
+				(object ActivityStateView "自动催还后，手动催还图书" @329
+				    Parent_View 	@327
+				    location   	(256, 384)
 				    font       	(object Font
 					size       	9
 					face       	"Arial"
@@ -6185,38 +7292,38 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@274
-					location   	(248, 385)
+					Parent_View 	@329
+					location   	(256, 385)
 					fill_color 	13434879
 					anchor_loc 	1
 					nlines     	2
 					max_width  	269
 					justify    	0
-					label      	"催还图书")
+					label      	"自动催还后，手动催还图书")
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    fill_color 	13434879
 				    quidu      	"570D0C070025"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object TransView "" @275
+				(object TransView "" @330
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0C15029E"
-				    client     	@273
-				    supplier   	@274
+				    client     	@328
+				    supplier   	@329
 				    vertices   	(list Points
-					(240, 125)
-					(246, 332))
+					(241, 126)
+					(253, 332))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object Swimlane "系统" @276
+				(object Swimlane "系统" @331
 				    location   	(504, 0)
 				    line_color 	3342489
 				    quidu      	"570D0BF6035C"
 				    width      	496)
-				(object ActivityStateView "修改催还标识" @277
-				    Parent_View 	@276
+				(object ActivityStateView "修改催还标识" @332
+				    Parent_View 	@331
 				    location   	(752, 528)
 				    font       	(object Font
 					size       	9
@@ -6228,7 +7335,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@277
+					Parent_View 	@332
 					location   	(752, 529)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -6242,25 +7349,25 @@
 				    quidu      	"570D0C1C02B2"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object TransView "" @278
+				(object TransView "" @333
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0C3102FE"
-				    client     	@274
-				    supplier   	@277
+				    client     	@329
+				    supplier   	@332
 				    vertices   	(list Points
-					(419, 382)
+					(427, 382)
 					(750, 381)
 					(751, 476))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object Swimlane "读者" @279
+				(object Swimlane "读者" @334
 				    location   	(1000, 0)
 				    line_color 	3342489
 				    quidu      	"570D0BFA00A7"
 				    width      	512)
-				(object ActivityStateView "读者提醒" @280
-				    Parent_View 	@279
+				(object ActivityStateView "读者提醒" @335
+				    Parent_View 	@334
 				    location   	(1265, 528)
 				    font       	(object Font
 					size       	9
@@ -6272,7 +7379,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@280
+					Parent_View 	@335
 					location   	(1265, 529)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -6286,34 +7393,34 @@
 				    quidu      	"570D0C3E02AA"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object TransView "" @281
+				(object TransView "" @336
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0C5901A5"
-				    client     	@277
-				    supplier   	@280
+				    client     	@332
+				    supplier   	@335
 				    vertices   	(list Points
 					(923, 528)
 					(1094, 528))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object StateView "EndState" "$UNNAMED$26" @282
-				    Parent_View 	@279
+				(object StateView "EndState" "$UNNAMED$26" @337
+				    Parent_View 	@334
 				    location   	(1264, 848)
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    quidu      	"570D0C6303D6"
 				    autoResize 	TRUE)
-				(object Swimlane "" @283
+				(object Swimlane "" @338
 				    location   	(1512, 0)
 				    line_color 	3342489
 				    width      	450)
-				(object TransView "" @284
+				(object TransView "" @339
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0C6801EA"
-				    client     	@280
-				    supplier   	@282
+				    client     	@335
+				    supplier   	@337
 				    vertices   	(list Points
 					(1264, 581)
 					(1264, 806))
@@ -6392,19 +7499,19 @@
 			    origin_x   	0
 			    origin_y   	0
 			    items      	(list diagram_item_list
-				(object Swimlane "图书管理员" @285
+				(object Swimlane "图书管理员" @340
 				    line_color 	3342489
 				    quidu      	"570D0C7A0334"
 				    width      	520)
-				(object StateView "StartState" "$UNNAMED$27" @286
-				    Parent_View 	@285
+				(object StateView "StartState" "$UNNAMED$27" @341
+				    Parent_View 	@340
 				    location   	(269, 160)
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    quidu      	"570D0C920282"
 				    autoResize 	TRUE)
-				(object ActivityStateView "分馆信息查询" @287
-				    Parent_View 	@285
+				(object ActivityStateView "分馆信息查询" @342
+				    Parent_View 	@340
 				    location   	(272, 528)
 				    font       	(object Font
 					size       	9
@@ -6416,7 +7523,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@287
+					Parent_View 	@342
 					location   	(272, 529)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -6430,19 +7537,19 @@
 				    quidu      	"570D0C960059"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object TransView "" @288
+				(object TransView "" @343
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0CA102F6"
-				    client     	@286
-				    supplier   	@287
+				    client     	@341
+				    supplier   	@342
 				    vertices   	(list Points
 					(269, 190)
 					(271, 475))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object ActivityStateView "返回分馆信息" @289
-				    Parent_View 	@285
+				(object ActivityStateView "返回分馆信息" @344
+				    Parent_View 	@340
 				    location   	(256, 784)
 				    font       	(object Font
 					size       	9
@@ -6454,7 +7561,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@289
+					Parent_View 	@344
 					location   	(256, 785)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -6468,20 +7575,20 @@
 				    quidu      	"570D0CBD0317"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object StateView "EndState" "$UNNAMED$28" @290
-				    Parent_View 	@285
+				(object StateView "EndState" "$UNNAMED$28" @345
+				    Parent_View 	@340
 				    location   	(256, 1056)
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    quidu      	"570D0CD002BB"
 				    autoResize 	TRUE)
-				(object Swimlane "系统" @291
+				(object Swimlane "系统" @346
 				    location   	(520, 0)
 				    line_color 	3342489
 				    quidu      	"570D0C8700B0"
 				    width      	496)
-				(object ActivityStateView "数据库检索" @292
-				    Parent_View 	@291
+				(object ActivityStateView "数据库检索" @347
+				    Parent_View 	@346
 				    location   	(768, 528)
 				    font       	(object Font
 					size       	9
@@ -6493,7 +7600,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@292
+					Parent_View 	@347
 					location   	(768, 529)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -6507,39 +7614,39 @@
 				    quidu      	"570D0CA803C5"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object TransView "" @293
+				(object TransView "" @348
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0CB403E1"
-				    client     	@287
-				    supplier   	@292
+				    client     	@342
+				    supplier   	@347
 				    vertices   	(list Points
 					(443, 528)
 					(597, 528))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object TransView "" @294
+				(object TransView "" @349
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0CC7029A"
-				    client     	@292
-				    supplier   	@289
+				    client     	@347
+				    supplier   	@344
 				    vertices   	(list Points
 					(767, 580)
 					(766, 781)
 					(427, 782))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object Swimlane "" @295
+				(object Swimlane "" @350
 				    location   	(1016, 0)
 				    line_color 	3342489
 				    width      	450)
-				(object TransView "" @296
+				(object TransView "" @351
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0CD301DB"
-				    client     	@289
-				    supplier   	@290
+				    client     	@344
+				    supplier   	@345
 				    vertices   	(list Points
 					(256, 837)
 					(256, 1014))
@@ -6663,19 +7770,19 @@
 			    origin_x   	0
 			    origin_y   	0
 			    items      	(list diagram_item_list
-				(object Swimlane "读者" @297
+				(object Swimlane "读者" @352
 				    line_color 	3342489
 				    quidu      	"570D0CE90013"
 				    width      	508)
-				(object StateView "StartState" "$UNNAMED$29" @298
-				    Parent_View 	@297
+				(object StateView "StartState" "$UNNAMED$29" @353
+				    Parent_View 	@352
 				    location   	(256, 112)
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    quidu      	"570D0CF60165"
 				    autoResize 	TRUE)
-				(object ActivityStateView "馆际借阅图书" @299
-				    Parent_View 	@297
+				(object ActivityStateView "馆际借阅图书" @354
+				    Parent_View 	@352
 				    location   	(261, 368)
 				    font       	(object Font
 					size       	9
@@ -6687,7 +7794,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@299
+					Parent_View 	@354
 					location   	(261, 369)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -6701,19 +7808,19 @@
 				    quidu      	"570D0CFE030D"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object TransView "" @300
+				(object TransView "" @355
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0D0103E3"
-				    client     	@298
-				    supplier   	@299
+				    client     	@353
+				    supplier   	@354
 				    vertices   	(list Points
 					(256, 142)
 					(259, 316))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object ActivityStateView "确定借阅" @301
-				    Parent_View 	@297
+				(object ActivityStateView "确定借阅" @356
+				    Parent_View 	@352
 				    location   	(256, 672)
 				    font       	(object Font
 					size       	9
@@ -6725,7 +7832,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@301
+					Parent_View 	@356
 					location   	(256, 673)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -6739,13 +7846,13 @@
 				    quidu      	"570D0D61031A"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object Swimlane "图书管理员" @302
+				(object Swimlane "图书管理员" @357
 				    location   	(508, 0)
 				    line_color 	3342489
 				    quidu      	"570D0CEC01F2"
 				    width      	496)
-				(object ActivityStateView "馆际图书查询" @303
-				    Parent_View 	@302
+				(object ActivityStateView "馆际图书查询" @358
+				    Parent_View 	@357
 				    location   	(756, 368)
 				    font       	(object Font
 					size       	9
@@ -6757,7 +7864,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@303
+					Parent_View 	@358
 					location   	(756, 369)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -6771,19 +7878,19 @@
 				    quidu      	"570D0D1E021F"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object TransView "" @304
+				(object TransView "" @359
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0D290316"
-				    client     	@299
-				    supplier   	@303
+				    client     	@354
+				    supplier   	@358
 				    vertices   	(list Points
 					(432, 368)
 					(585, 368))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object ActivityStateView "返回查询图书信息" @305
-				    Parent_View 	@302
+				(object ActivityStateView "返回查询图书信息" @360
+				    Parent_View 	@357
 				    location   	(756, 672)
 				    font       	(object Font
 					size       	9
@@ -6795,7 +7902,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@305
+					Parent_View 	@360
 					location   	(756, 673)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -6809,19 +7916,19 @@
 				    quidu      	"570D0D4C0197"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object TransView "" @306
+				(object TransView "" @361
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0D6B0339"
-				    client     	@305
-				    supplier   	@301
+				    client     	@360
+				    supplier   	@356
 				    vertices   	(list Points
 					(585, 672)
 					(427, 672))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object ActivityStateView "发起借阅申请" @307
-				    Parent_View 	@302
+				(object ActivityStateView "发起借阅申请" @362
+				    Parent_View 	@357
 				    location   	(756, 960)
 				    font       	(object Font
 					size       	9
@@ -6833,7 +7940,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@307
+					Parent_View 	@362
 					location   	(756, 961)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -6847,25 +7954,25 @@
 				    quidu      	"570D0D720273"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object TransView "" @308
+				(object TransView "" @363
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0D7B00A0"
-				    client     	@301
-				    supplier   	@307
+				    client     	@356
+				    supplier   	@362
 				    vertices   	(list Points
 					(255, 724)
 					(253, 959)
 					(584, 959))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object Swimlane "系统" @309
+				(object Swimlane "系统" @364
 				    location   	(1004, 0)
 				    line_color 	3342489
 				    quidu      	"570D0CF10100"
 				    width      	508)
-				(object ActivityStateView "图书信息检索" @310
-				    Parent_View 	@309
+				(object ActivityStateView "图书信息检索" @365
+				    Parent_View 	@364
 				    location   	(1252, 368)
 				    font       	(object Font
 					size       	9
@@ -6877,7 +7984,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@310
+					Parent_View 	@365
 					location   	(1252, 369)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -6891,31 +7998,31 @@
 				    quidu      	"570D0D320124"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object TransView "" @311
+				(object TransView "" @366
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0D3D026A"
-				    client     	@303
-				    supplier   	@310
+				    client     	@358
+				    supplier   	@365
 				    vertices   	(list Points
 					(927, 368)
 					(1081, 368))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object TransView "" @312
+				(object TransView "" @367
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0D55039B"
-				    client     	@310
-				    supplier   	@305
+				    client     	@365
+				    supplier   	@360
 				    vertices   	(list Points
 					(1251, 420)
 					(1251, 672)
 					(927, 672))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object ActivityStateView "修改图书状态信息" @313
-				    Parent_View 	@309
+				(object ActivityStateView "修改图书状态信息" @368
+				    Parent_View 	@364
 				    location   	(1265, 960)
 				    font       	(object Font
 					size       	9
@@ -6927,7 +8034,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@313
+					Parent_View 	@368
 					location   	(1265, 961)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -6941,34 +8048,34 @@
 				    quidu      	"570D0D89001D"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object TransView "" @314
+				(object TransView "" @369
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0D9802B3"
-				    client     	@307
-				    supplier   	@313
+				    client     	@362
+				    supplier   	@368
 				    vertices   	(list Points
 					(927, 960)
 					(1094, 960))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object StateView "EndState" "$UNNAMED$30" @315
-				    Parent_View 	@309
+				(object StateView "EndState" "$UNNAMED$30" @370
+				    Parent_View 	@364
 				    location   	(1264, 1296)
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    quidu      	"570D0DA2034F"
 				    autoResize 	TRUE)
-				(object Swimlane "" @316
+				(object Swimlane "" @371
 				    location   	(1512, 0)
 				    line_color 	3342489
 				    width      	450)
-				(object TransView "" @317
+				(object TransView "" @372
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570D0DA50260"
-				    client     	@313
-				    supplier   	@315
+				    client     	@368
+				    supplier   	@370
 				    vertices   	(list Points
 					(1264, 1012)
 					(1264, 1254))
@@ -7047,19 +8154,19 @@
 			    origin_x   	0
 			    origin_y   	0
 			    items      	(list diagram_item_list
-				(object Swimlane "读者" @318
+				(object Swimlane "读者" @373
 				    line_color 	3342489
 				    quidu      	"570DDB9C013A"
 				    width      	504)
-				(object StateView "StartState" "$UNNAMED$31" @319
-				    Parent_View 	@318
+				(object StateView "StartState" "$UNNAMED$31" @374
+				    Parent_View 	@373
 				    location   	(240, 96)
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    quidu      	"570DDBAC007F"
 				    autoResize 	TRUE)
-				(object ActivityStateView "查询图书流通量排行" @320
-				    Parent_View 	@318
+				(object ActivityStateView "查询图书流通量排行" @375
+				    Parent_View 	@373
 				    location   	(248, 256)
 				    font       	(object Font
 					size       	9
@@ -7071,7 +8178,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@320
+					Parent_View 	@375
 					location   	(248, 257)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -7085,8 +8192,8 @@
 				    quidu      	"570DDBB00080"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object ActivityStateView "显示排行" @321
-				    Parent_View 	@318
+				(object ActivityStateView "显示排行" @376
+				    Parent_View 	@373
 				    location   	(256, 464)
 				    font       	(object Font
 					size       	9
@@ -7098,7 +8205,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@321
+					Parent_View 	@376
 					location   	(256, 465)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -7112,20 +8219,20 @@
 				    quidu      	"570DDBD90252"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object StateView "EndState" "$UNNAMED$32" @322
-				    Parent_View 	@318
+				(object StateView "EndState" "$UNNAMED$32" @377
+				    Parent_View 	@373
 				    location   	(256, 624)
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    quidu      	"570DDBE500FA"
 				    autoResize 	TRUE)
-				(object Swimlane "系统" @323
+				(object Swimlane "系统" @378
 				    location   	(504, 0)
 				    line_color 	3342489
 				    quidu      	"570DDBA600E3"
 				    width      	496)
-				(object ActivityStateView "检索数据库" @324
-				    Parent_View 	@323
+				(object ActivityStateView "检索数据库" @379
+				    Parent_View 	@378
 				    location   	(752, 256)
 				    font       	(object Font
 					size       	9
@@ -7137,7 +8244,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@324
+					Parent_View 	@379
 					location   	(752, 257)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -7151,50 +8258,50 @@
 				    quidu      	"570DDBCF0001"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object Swimlane "" @325
+				(object Swimlane "" @380
 				    location   	(1000, 0)
 				    line_color 	3342489
 				    width      	450)
-				(object TransView "" @326
+				(object TransView "" @381
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570DDC1B028B"
-				    client     	@320
-				    supplier   	@324
+				    client     	@375
+				    supplier   	@379
 				    vertices   	(list Points
 					(419, 256)
 					(581, 256))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object TransView "" @327
+				(object TransView "" @382
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570DDC6101A2"
-				    client     	@324
-				    supplier   	@321
+				    client     	@379
+				    supplier   	@376
 				    vertices   	(list Points
 					(751, 309)
 					(750, 463)
 					(427, 463))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object TransView "" @328
+				(object TransView "" @383
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570DDC860209"
-				    client     	@321
-				    supplier   	@322
+				    client     	@376
+				    supplier   	@377
 				    vertices   	(list Points
 					(256, 517)
 					(256, 582))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object TransView "" @329
+				(object TransView "" @384
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570DDCA202AC"
-				    client     	@319
-				    supplier   	@320
+				    client     	@374
+				    supplier   	@375
 				    vertices   	(list Points
 					(241, 126)
 					(245, 203))
@@ -7273,19 +8380,19 @@
 			    origin_x   	0
 			    origin_y   	0
 			    items      	(list diagram_item_list
-				(object Swimlane "读者" @330
+				(object Swimlane "读者" @385
 				    line_color 	3342489
 				    quidu      	"570DDCF403C9"
 				    width      	520)
-				(object StateView "StartState" "$UNNAMED$33" @331
-				    Parent_View 	@330
+				(object StateView "StartState" "$UNNAMED$33" @386
+				    Parent_View 	@385
 				    location   	(272, 112)
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    quidu      	"570DDD0100D6"
 				    autoResize 	TRUE)
-				(object ActivityStateView "查询借阅排行" @332
-				    Parent_View 	@330
+				(object ActivityStateView "查询借阅排行" @387
+				    Parent_View 	@385
 				    location   	(272, 256)
 				    font       	(object Font
 					size       	9
@@ -7297,7 +8404,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@332
+					Parent_View 	@387
 					location   	(272, 257)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -7311,8 +8418,8 @@
 				    quidu      	"570DDD04032E"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object ActivityStateView "显示借阅排行" @333
-				    Parent_View 	@330
+				(object ActivityStateView "显示借阅排行" @388
+				    Parent_View 	@385
 				    location   	(273, 464)
 				    font       	(object Font
 					size       	9
@@ -7324,7 +8431,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@333
+					Parent_View 	@388
 					location   	(273, 465)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -7338,20 +8445,20 @@
 				    quidu      	"570DDD2C01CD"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object StateView "EndState" "$UNNAMED$34" @334
-				    Parent_View 	@330
+				(object StateView "EndState" "$UNNAMED$34" @389
+				    Parent_View 	@385
 				    location   	(272, 624)
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    quidu      	"570DDD39021B"
 				    autoResize 	TRUE)
-				(object Swimlane "系统" @335
+				(object Swimlane "系统" @390
 				    location   	(520, 0)
 				    line_color 	3342489
 				    quidu      	"570DDCFA0166"
 				    width      	496)
-				(object ActivityStateView "检索数据库" @336
-				    Parent_View 	@335
+				(object ActivityStateView "检索数据库" @391
+				    Parent_View 	@390
 				    location   	(768, 256)
 				    font       	(object Font
 					size       	9
@@ -7363,7 +8470,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@336
+					Parent_View 	@391
 					location   	(768, 257)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -7377,50 +8484,50 @@
 				    quidu      	"570DDD1D0365"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object Swimlane "" @337
+				(object Swimlane "" @392
 				    location   	(1016, 0)
 				    line_color 	3342489
 				    width      	450)
-				(object TransView "" @338
+				(object TransView "" @393
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570DDD470139"
-				    client     	@331
-				    supplier   	@332
+				    client     	@386
+				    supplier   	@387
 				    vertices   	(list Points
 					(272, 142)
 					(272, 204))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object TransView "" @339
+				(object TransView "" @394
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570DDD66008A"
-				    client     	@332
-				    supplier   	@336
+				    client     	@387
+				    supplier   	@391
 				    vertices   	(list Points
 					(443, 256)
 					(597, 256))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object TransView "" @340
+				(object TransView "" @395
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570DDD6D0162"
-				    client     	@336
-				    supplier   	@333
+				    client     	@391
+				    supplier   	@388
 				    vertices   	(list Points
 					(767, 309)
 					(766, 463)
 					(444, 463))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object TransView "" @341
+				(object TransView "" @396
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570DDD8A0214"
-				    client     	@333
-				    supplier   	@334
+				    client     	@388
+				    supplier   	@389
 				    vertices   	(list Points
 					(272, 516)
 					(272, 581))
@@ -7499,19 +8606,19 @@
 			    origin_x   	0
 			    origin_y   	0
 			    items      	(list diagram_item_list
-				(object Swimlane "读者" @342
+				(object Swimlane "读者" @397
 				    line_color 	3342489
 				    quidu      	"570DDDB002EC"
 				    width      	520)
-				(object StateView "StartState" "$UNNAMED$35" @343
-				    Parent_View 	@342
+				(object StateView "StartState" "$UNNAMED$35" @398
+				    Parent_View 	@397
 				    location   	(256, 96)
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    quidu      	"570DDDBD020A"
 				    autoResize 	TRUE)
-				(object ActivityStateView "查询评分排行" @344
-				    Parent_View 	@342
+				(object ActivityStateView "查询评分排行" @399
+				    Parent_View 	@397
 				    location   	(256, 240)
 				    font       	(object Font
 					size       	9
@@ -7523,7 +8630,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@344
+					Parent_View 	@399
 					location   	(256, 241)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -7537,8 +8644,8 @@
 				    quidu      	"570DDDC00174"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object ActivityStateView "显示评分排行" @345
-				    Parent_View 	@342
+				(object ActivityStateView "显示评分排行" @400
+				    Parent_View 	@397
 				    location   	(273, 448)
 				    font       	(object Font
 					size       	9
@@ -7550,7 +8657,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@345
+					Parent_View 	@400
 					location   	(273, 449)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -7564,20 +8671,20 @@
 				    quidu      	"570DDDD70137"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object StateView "EndState" "$UNNAMED$36" @346
-				    Parent_View 	@342
+				(object StateView "EndState" "$UNNAMED$36" @401
+				    Parent_View 	@397
 				    location   	(272, 640)
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    quidu      	"570DDDE402BF"
 				    autoResize 	TRUE)
-				(object Swimlane "系统" @347
+				(object Swimlane "系统" @402
 				    location   	(520, 0)
 				    line_color 	3342489
 				    quidu      	"570DDDB70349"
 				    width      	496)
-				(object ActivityStateView "检索数据库" @348
-				    Parent_View 	@347
+				(object ActivityStateView "检索数据库" @403
+				    Parent_View 	@402
 				    location   	(768, 240)
 				    font       	(object Font
 					size       	9
@@ -7589,7 +8696,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@348
+					Parent_View 	@403
 					location   	(768, 241)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -7603,50 +8710,50 @@
 				    quidu      	"570DDDCD02EC"
 				    annotation 	1
 				    autoResize 	TRUE)
-				(object Swimlane "" @349
+				(object Swimlane "" @404
 				    location   	(1016, 0)
 				    line_color 	3342489
 				    width      	450)
-				(object TransView "" @350
+				(object TransView "" @405
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570DDDF400B1"
-				    client     	@343
-				    supplier   	@344
+				    client     	@398
+				    supplier   	@399
 				    vertices   	(list Points
 					(256, 126)
 					(256, 188))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object TransView "" @351
+				(object TransView "" @406
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570DDDFA0000"
-				    client     	@344
-				    supplier   	@348
+				    client     	@399
+				    supplier   	@403
 				    vertices   	(list Points
 					(427, 240)
 					(597, 240))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object TransView "" @352
+				(object TransView "" @407
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570DDDFD030D"
-				    client     	@348
-				    supplier   	@345
+				    client     	@403
+				    supplier   	@400
 				    vertices   	(list Points
 					(767, 293)
 					(766, 447)
 					(444, 447))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object TransView "" @353
+				(object TransView "" @408
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570DDE070245"
-				    client     	@345
-				    supplier   	@346
+				    client     	@400
+				    supplier   	@401
 				    vertices   	(list Points
 					(272, 500)
 					(272, 598))
@@ -7717,19 +8824,19 @@
 			    origin_x   	0
 			    origin_y   	0
 			    items      	(list diagram_item_list
-				(object Swimlane "读者" @354
+				(object Swimlane "读者" @409
 				    line_color 	3342489
 				    quidu      	"570DAF4601A2"
 				    width      	450)
-				(object StateView "StartState" "$UNNAMED$37" @355
-				    Parent_View 	@354
+				(object StateView "StartState" "$UNNAMED$37" @410
+				    Parent_View 	@409
 				    location   	(224, 144)
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    quidu      	"570DAF4F01F1"
 				    autoResize 	TRUE)
-				(object StateView "Normal" "填写书评" @356
-				    Parent_View 	@354
+				(object StateView "Normal" "填写书评" @411
+				    Parent_View 	@409
 				    location   	(210, 320)
 				    font       	(object Font
 					size       	9
@@ -7741,7 +8848,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@356
+					Parent_View 	@411
 					location   	(210, 306)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -7755,13 +8862,13 @@
 				    quidu      	"570DAF57031D"
 				    height     	134
 				    autoResize 	TRUE)
-				(object Swimlane "系统" @357
+				(object Swimlane "系统" @412
 				    location   	(450, 0)
 				    line_color 	3342489
 				    quidu      	"570DAF4B0163"
 				    width      	450)
-				(object StateView "Normal" "保存数据" @358
-				    Parent_View 	@357
+				(object StateView "Normal" "保存数据" @413
+				    Parent_View 	@412
 				    location   	(660, 576)
 				    font       	(object Font
 					size       	9
@@ -7773,7 +8880,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@358
+					Parent_View 	@413
 					location   	(660, 562)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -7787,45 +8894,45 @@
 				    quidu      	"570DAF6A00D5"
 				    height     	134
 				    autoResize 	TRUE)
-				(object StateView "EndState" "$UNNAMED$38" @359
-				    Parent_View 	@357
+				(object StateView "EndState" "$UNNAMED$38" @414
+				    Parent_View 	@412
 				    location   	(672, 848)
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    quidu      	"570DAF6E03A6"
 				    autoResize 	TRUE)
-				(object Swimlane "" @360
+				(object Swimlane "" @415
 				    location   	(900, 0)
 				    line_color 	3342489
 				    width      	450)
-				(object TransView "" @361
+				(object TransView "" @416
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570DAF73009C"
-				    client     	@355
-				    supplier   	@356
+				    client     	@410
+				    supplier   	@411
 				    vertices   	(list Points
 					(221, 173)
 					(215, 253))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object TransView "" @362
+				(object TransView "" @417
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570DAF770263"
-				    client     	@356
-				    supplier   	@358
+				    client     	@411
+				    supplier   	@413
 				    vertices   	(list Points
 					(327, 386)
 					(542, 508))
 				    line_style 	0
 				    x_offset   	FALSE)
-				(object TransView "" @363
+				(object TransView "" @418
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570DAF7A00FB"
-				    client     	@358
-				    supplier   	@359
+				    client     	@413
+				    supplier   	@414
 				    vertices   	(list Points
 					(662, 642)
 					(670, 806))
@@ -7853,7 +8960,9 @@
 			    type       	"StartState")
 			(object State "$UNNAMED$40"
 			    quid       	"570DAFB7020E"
-			    type       	"EndState"))
+			    type       	"EndState")
+			(object ActivityState "$UNNAMED$41"
+			    quid       	"571A732802D6"))
 		    partitions 	(list Partitions
 			(object Partition "读者"
 			    quid       	"570DAF8E0146"
@@ -7918,12 +9027,12 @@
 			    origin_x   	0
 			    origin_y   	0
 			    items      	(list diagram_item_list
-				(object Swimlane "读者" @364
+				(object Swimlane "读者" @419
 				    line_color 	3342489
 				    quidu      	"570DAF8E0146"
-				    width      	450)
-				(object StateView "Normal" "评分图书" @365
-				    Parent_View 	@364
+				    width      	460)
+				(object StateView "Normal" "评分图书" @420
+				    Parent_View 	@419
 				    location   	(210, 288)
 				    font       	(object Font
 					size       	9
@@ -7935,7 +9044,7 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@365
+					Parent_View 	@420
 					location   	(210, 274)
 					fill_color 	13434879
 					anchor_loc 	1
@@ -7949,21 +9058,32 @@
 				    quidu      	"570DAF940261"
 				    height     	134
 				    autoResize 	TRUE)
-				(object StateView "StartState" "$UNNAMED$39" @366
-				    Parent_View 	@364
+				(object StateView "StartState" "$UNNAMED$39" @421
+				    Parent_View 	@419
 				    location   	(192, 96)
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    quidu      	"570DAFB60030"
 				    autoResize 	TRUE)
-				(object Swimlane "系统" @367
-				    location   	(450, 0)
+				(object TransView "" @422
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"570DAFBA000C"
+				    client     	@421
+				    supplier   	@420
+				    vertices   	(list Points
+					(194, 125)
+					(203, 221))
+				    line_style 	0
+				    x_offset   	FALSE)
+				(object Swimlane "系统" @423
+				    location   	(460, 0)
 				    line_color 	3342489
 				    quidu      	"570DAF91018A"
 				    width      	450)
-				(object StateView "Normal" "计算评分平均值" @368
-				    Parent_View 	@367
-				    location   	(660, 608)
+				(object StateView "Normal" "计算评分平均值" @424
+				    Parent_View 	@423
+				    location   	(670, 608)
 				    font       	(object Font
 					size       	9
 					face       	"Arial"
@@ -7974,8 +9094,8 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@368
-					location   	(660, 594)
+					Parent_View 	@424
+					location   	(670, 594)
 					fill_color 	13434879
 					anchor_loc 	1
 					nlines     	2
@@ -7988,9 +9108,9 @@
 				    quidu      	"570DAF9A008E"
 				    height     	134
 				    autoResize 	TRUE)
-				(object StateView "Normal" "记录读者评分" @369
-				    Parent_View 	@367
-				    location   	(660, 416)
+				(object StateView "Normal" "记录读者评分" @425
+				    Parent_View 	@423
+				    location   	(670, 416)
 				    font       	(object Font
 					size       	9
 					face       	"Arial"
@@ -8001,8 +9121,8 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@369
-					location   	(660, 402)
+					Parent_View 	@425
+					location   	(670, 402)
 					fill_color 	13434879
 					anchor_loc 	1
 					nlines     	2
@@ -8015,9 +9135,31 @@
 				    quidu      	"570DAFA803D1"
 				    height     	134
 				    autoResize 	TRUE)
-				(object StateView "Normal" "保存数据" @370
-				    Parent_View 	@367
-				    location   	(660, 816)
+				(object TransView "" @426
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"570DAFBB0264"
+				    client     	@420
+				    supplier   	@425
+				    vertices   	(list Points
+					(360, 329)
+					(520, 374))
+				    line_style 	0
+				    x_offset   	FALSE)
+				(object TransView "" @427
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"570DAFBD027C"
+				    client     	@425
+				    supplier   	@424
+				    vertices   	(list Points
+					(670, 483)
+					(670, 541))
+				    line_style 	0
+				    x_offset   	FALSE)
+				(object StateView "Normal" "保存数据" @428
+				    Parent_View 	@423
+				    location   	(670, 816)
 				    font       	(object Font
 					size       	9
 					face       	"Arial"
@@ -8028,8 +9170,8 @@
 					color      	0
 					default_color 	TRUE)
 				    label      	(object ItemLabel
-					Parent_View 	@370
-					location   	(660, 802)
+					Parent_View 	@428
+					location   	(670, 802)
 					fill_color 	13434879
 					anchor_loc 	1
 					nlines     	2
@@ -8042,72 +9184,39 @@
 				    quidu      	"570DAFB102C5"
 				    height     	134
 				    autoResize 	TRUE)
-				(object StateView "EndState" "$UNNAMED$40" @371
-				    Parent_View 	@367
-				    location   	(640, 1088)
+				(object TransView "" @429
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"570DAFBF017C"
+				    client     	@424
+				    supplier   	@428
+				    vertices   	(list Points
+					(670, 675)
+					(670, 749))
+				    line_style 	0
+				    x_offset   	FALSE)
+				(object StateView "EndState" "$UNNAMED$40" @430
+				    Parent_View 	@423
+				    location   	(650, 1088)
 				    icon_style 	"Icon"
 				    line_color 	3342489
 				    quidu      	"570DAFB7020E"
 				    autoResize 	TRUE)
-				(object Swimlane "" @372
-				    location   	(900, 0)
-				    line_color 	3342489
-				    width      	450)
-				(object TransView "" @373
-				    stereotype 	TRUE
-				    line_color 	3342489
-				    quidu      	"570DAFBA000C"
-				    client     	@366
-				    supplier   	@365
-				    vertices   	(list Points
-					(194, 125)
-					(203, 221))
-				    line_style 	0
-				    x_offset   	FALSE)
-				(object TransView "" @374
-				    stereotype 	TRUE
-				    line_color 	3342489
-				    quidu      	"570DAFBB0264"
-				    client     	@365
-				    supplier   	@369
-				    vertices   	(list Points
-					(360, 330)
-					(510, 373))
-				    line_style 	0
-				    x_offset   	FALSE)
-				(object TransView "" @375
-				    stereotype 	TRUE
-				    line_color 	3342489
-				    quidu      	"570DAFBD027C"
-				    client     	@369
-				    supplier   	@368
-				    vertices   	(list Points
-					(660, 483)
-					(660, 541))
-				    line_style 	0
-				    x_offset   	FALSE)
-				(object TransView "" @376
-				    stereotype 	TRUE
-				    line_color 	3342489
-				    quidu      	"570DAFBF017C"
-				    client     	@368
-				    supplier   	@370
-				    vertices   	(list Points
-					(660, 675)
-					(660, 749))
-				    line_style 	0
-				    x_offset   	FALSE)
-				(object TransView "" @377
+				(object TransView "" @431
 				    stereotype 	TRUE
 				    line_color 	3342489
 				    quidu      	"570DAFC30275"
-				    client     	@370
-				    supplier   	@371
+				    client     	@428
+				    supplier   	@430
 				    vertices   	(list Points
-					(655, 883)
-					(643, 1046))
+					(665, 883)
+					(653, 1046))
 				    line_style 	0
-				    x_offset   	FALSE))))))
+				    x_offset   	FALSE)
+				(object Swimlane "" @432
+				    location   	(910, 0)
+				    line_color 	3342489
+				    width      	450))))))
 	    (object UseCase "查看借阅图书"
 		quid       	"5703625D01EA"
 		visible_modules 	(list dependency_list
@@ -8121,288 +9230,722 @@
 			stereotype 	"include"
 			supplier   	"Use Case View::评分图书"
 			quidu      	"5703623B0032")))
-	    (object Association "$UNNAMED$41"
+	    (object UseCase "NewUseCase2"
+		quid       	"571A70AC00D6")
+	    (object UseCase "NewUseCase3"
+		quid       	"571A7280020D")
+	    (object UseCase "系统管理员权限"
+		quid       	"571A78130026")
+	    (object UseCase "图书管理员权限"
+		quid       	"571A78270256")
+	    (object UseCase "普通用户权限"
+		quid       	"571A782A00C6")
+	    (object UseCase "自动催还图书"
+		quid       	"5731EBBE01A3"
+		statemachine 	(object State_Machine "State/Activity Model24"
+		    quid       	"5731EBD80091"
+		    states     	(list States
+			(object State "$UNNAMED$42"
+			    quid       	"5731EBF600F4"
+			    type       	"StartState")
+			(object ActivityState "刷选逾期2天未归还的读者"
+			    quid       	"5731EBFC000D")
+			(object ActivityState "自动发送通知给读者"
+			    quid       	"5731EC330166")
+			(object Decision "$UNNAMED$43"
+			    quid       	"5731EC700160")
+			(object ActivityState "特定时间再次发送通知"
+			    quid       	"5731EC81014C")
+			(object ActivityState "读者办理逾期，不再提醒"
+			    quid       	"5731ECA4023A")
+			(object State "$UNNAMED$44"
+			    quid       	"5731ECF802C3"
+			    type       	"EndState")
+			(object State "$UNNAMED$45"
+			    quid       	"5731ED04018C"
+			    type       	"EndState"))
+		    partitions 	(list Partitions
+			(object Partition "系统"
+			    quid       	"5731EBE80186"
+			    persistence 	"Transient"
+			    creationObj 	FALSE
+			    multi      	FALSE)
+			(object Partition "读者"
+			    quid       	"5731EBEC03AD"
+			    persistence 	"Transient"
+			    creationObj 	FALSE
+			    multi      	FALSE))
+		    objects    	(list Objects)
+		    transitions 	(list transition_list
+			(object State_Transition
+			    quid       	"5731EC0601B7"
+			    supplier   	"Use Case View::自动催还图书::State/Activity Model24::刷选逾期2天未归还的读者"
+			    supplier_quidu 	"5731EBFC000D"
+			    client     	"$UNNAMED$42"
+			    client_quidu 	"5731EBF600F4"
+			    sendEvent  	(object sendEvent
+				quid       	"5731EC0601BA"))
+			(object State_Transition
+			    quid       	"5731EC47019D"
+			    supplier   	"Use Case View::自动催还图书::State/Activity Model24::自动发送通知给读者"
+			    supplier_quidu 	"5731EC330166"
+			    client     	"Use Case View::自动催还图书::State/Activity Model24::刷选逾期2天未归还的读者"
+			    client_quidu 	"5731EBFC000D"
+			    sendEvent  	(object sendEvent
+				quid       	"5731EC4701A0"))
+			(object State_Transition
+			    quid       	"5731EC7B0133"
+			    supplier   	"$UNNAMED$43"
+			    supplier_quidu 	"5731EC700160"
+			    client     	"Use Case View::自动催还图书::State/Activity Model24::自动发送通知给读者"
+			    client_quidu 	"5731EC330166"
+			    sendEvent  	(object sendEvent
+				quid       	"5731EC7B0136"))
+			(object State_Transition
+			    quid       	"5731EC8C00D2"
+			    label      	""
+			    supplier   	"Use Case View::自动催还图书::State/Activity Model24::特定时间再次发送通知"
+			    supplier_quidu 	"5731EC81014C"
+			    client     	"$UNNAMED$43"
+			    client_quidu 	"5731EC700160"
+			    Event      	(object Event "读者未处理"
+				quid       	"5731EC8C00D3")
+			    sendEvent  	(object sendEvent
+				quid       	"5731EC8C00D5"))
+			(object State_Transition
+			    quid       	"5731ECBC01E0"
+			    label      	""
+			    supplier   	"Use Case View::自动催还图书::State/Activity Model24::读者办理逾期，不再提醒"
+			    supplier_quidu 	"5731ECA4023A"
+			    client     	"$UNNAMED$43"
+			    client_quidu 	"5731EC700160"
+			    Event      	(object Event "读者处理逾期"
+				quid       	"5731ECBC01E1")
+			    sendEvent  	(object sendEvent
+				quid       	"5731ECBC01E3"))
+			(object State_Transition
+			    quid       	"5731ECFB01BE"
+			    supplier   	"$UNNAMED$44"
+			    supplier_quidu 	"5731ECF802C3"
+			    client     	"Use Case View::自动催还图书::State/Activity Model24::特定时间再次发送通知"
+			    client_quidu 	"5731EC81014C"
+			    sendEvent  	(object sendEvent
+				quid       	"5731ECFB01C1"))
+			(object State_Transition
+			    quid       	"5731ED070226"
+			    supplier   	"$UNNAMED$45"
+			    supplier_quidu 	"5731ED04018C"
+			    client     	"Use Case View::自动催还图书::State/Activity Model24::读者办理逾期，不再提醒"
+			    client_quidu 	"5731ECA4023A"
+			    sendEvent  	(object sendEvent
+				quid       	"5731ED070229")))
+		    objectflows 	(list objectflow_list)
+		    statediagrams 	(list StateDiagrams
+			(object ActivityDiagram "NewDiagram24"
+			    quid       	"5731EBD800B3"
+			    title      	"NewDiagram24"
+			    zoom       	100
+			    max_height 	28350
+			    max_width  	21600
+			    origin_x   	0
+			    origin_y   	0
+			    items      	(list diagram_item_list
+				(object Swimlane "系统" @433
+				    line_color 	3342489
+				    quidu      	"5731EBE80186"
+				    width      	504)
+				(object StateView "StartState" "$UNNAMED$42" @434
+				    Parent_View 	@433
+				    location   	(240, 160)
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    quidu      	"5731EBF600F4"
+				    autoResize 	TRUE)
+				(object ActivityStateView "刷选逾期2天未归还的读者" @435
+				    Parent_View 	@433
+				    location   	(248, 400)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object ItemLabel
+					Parent_View 	@435
+					location   	(248, 401)
+					fill_color 	13434879
+					anchor_loc 	1
+					nlines     	2
+					max_width  	269
+					justify    	0
+					label      	"刷选逾期2天未归还的读者")
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    fill_color 	13434879
+				    quidu      	"5731EBFC000D"
+				    annotation 	1
+				    autoResize 	TRUE)
+				(object TransView "" @436
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"5731EC0601B7"
+				    client     	@434
+				    supplier   	@435
+				    vertices   	(list Points
+					(241, 190)
+					(246, 347))
+				    line_style 	0
+				    x_offset   	FALSE)
+				(object ActivityStateView "特定时间再次发送通知" @437
+				    Parent_View 	@433
+				    location   	(256, 688)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object ItemLabel
+					Parent_View 	@437
+					location   	(256, 689)
+					fill_color 	13434879
+					anchor_loc 	1
+					nlines     	2
+					max_width  	269
+					justify    	0
+					label      	"特定时间再次发送通知")
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    fill_color 	13434879
+				    quidu      	"5731EC81014C"
+				    annotation 	1
+				    autoResize 	TRUE)
+				(object Swimlane "读者" @438
+				    location   	(504, 0)
+				    line_color 	3342489
+				    quidu      	"5731EBEC03AD"
+				    width      	516)
+				(object ActivityStateView "自动发送通知给读者" @439
+				    Parent_View 	@438
+				    location   	(773, 400)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object ItemLabel
+					Parent_View 	@439
+					location   	(773, 401)
+					fill_color 	13434879
+					anchor_loc 	1
+					nlines     	2
+					max_width  	269
+					justify    	0
+					label      	"自动发送通知给读者")
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    fill_color 	13434879
+				    quidu      	"5731EC330166"
+				    annotation 	1
+				    autoResize 	TRUE)
+				(object TransView "" @440
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"5731EC47019D"
+				    client     	@435
+				    supplier   	@439
+				    vertices   	(list Points
+					(419, 400)
+					(602, 400))
+				    line_style 	0
+				    x_offset   	FALSE)
+				(object DecisionView "$UNNAMED$43" @441
+				    Parent_View 	@438
+				    location   	(752, 704)
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    fill_color 	13434879
+				    quidu      	"5731EC700160"
+				    autoResize 	TRUE)
+				(object TransView "" @442
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"5731EC7B0133"
+				    client     	@439
+				    supplier   	@441
+				    vertices   	(list Points
+					(769, 452)
+					(752, 667))
+				    line_style 	0
+				    x_offset   	FALSE)
+				(object TransView "" @443
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object SegLabel @444
+					Parent_View 	@443
+					location   	(550, 744)
+					font       	(object Font
+					    size       	9
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					anchor_loc 	1
+					nlines     	1
+					max_width  	450
+					justify    	0
+					label      	"读者未处理"
+					pctDist    	0.500000
+					height     	45
+					orientation 	0)
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"5731EC8C00D2"
+				    client     	@441
+				    supplier   	@437
+				    vertices   	(list Points
+					(677, 704)
+					(426, 694))
+				    line_style 	0
+				    x_offset   	FALSE)
+				(object ActivityStateView "读者办理逾期，不再提醒" @445
+				    Parent_View 	@438
+				    location   	(752, 992)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object ItemLabel
+					Parent_View 	@445
+					location   	(752, 993)
+					fill_color 	13434879
+					anchor_loc 	1
+					nlines     	2
+					max_width  	269
+					justify    	0
+					label      	"读者办理逾期，不再提醒")
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    fill_color 	13434879
+				    quidu      	"5731ECA4023A"
+				    annotation 	1
+				    autoResize 	TRUE)
+				(object TransView "" @446
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    label      	(object SegLabel @447
+					Parent_View 	@446
+					location   	(797, 841)
+					font       	(object Font
+					    size       	9
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					anchor_loc 	1
+					nlines     	1
+					max_width  	450
+					justify    	0
+					label      	"读者处理逾期"
+					pctDist    	0.500000
+					height     	45
+					orientation 	0)
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"5731ECBC01E0"
+				    client     	@441
+				    supplier   	@445
+				    vertices   	(list Points
+					(752, 741)
+					(752, 940))
+				    line_style 	0
+				    x_offset   	FALSE)
+				(object StateView "EndState" "$UNNAMED$45" @448
+				    Parent_View 	@438
+				    location   	(752, 1264)
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    quidu      	"5731ED04018C"
+				    autoResize 	TRUE)
+				(object Swimlane "" @449
+				    location   	(1020, 0)
+				    line_color 	3342489
+				    width      	450)
+				(object TransView "" @450
+				    stereotype 	TRUE
+				    line_color 	3342489
+				    quidu      	"5731ED070226"
+				    client     	@445
+				    supplier   	@448
+				    vertices   	(list Points
+					(752, 1045)
+					(752, 1222))
+				    line_style 	0
+				    x_offset   	FALSE))))))
+	    (object Association "$UNNAMED$46"
 		quid       	"5703468F0271"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$42"
+		    (object Role "$UNNAMED$47"
 			quid       	"5703469002E0"
 			supplier   	"Use Case View::登陆系统"
 			quidu      	"5703467402E0"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$43"
+		    (object Role "$UNNAMED$48"
 			quid       	"5703469002E2"
 			supplier   	"Use Case View::普通用户"
 			quidu      	"5703457C01D5")))
-	    (object Association "$UNNAMED$44"
+	    (object Association "$UNNAMED$49"
 		quid       	"570346DE0134"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$45"
+		    (object Role "$UNNAMED$50"
 			quid       	"570346DE0379"
 			supplier   	"Use Case View::管理系统"
 			quidu      	"570346D2021D"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$46"
+		    (object Role "$UNNAMED$51"
 			quid       	"570346DE037B"
 			supplier   	"Use Case View::系统管理员"
 			quidu      	"570345C00219")))
-	    (object Association "$UNNAMED$47"
+	    (object Association "$UNNAMED$52"
 		quid       	"5703553E01B8"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$48"
+		    (object Role "$UNNAMED$53"
 			quid       	"5703553F01EB"
 			supplier   	"Use Case View::租借图书"
 			quidu      	"570353AA036F"
+			Containment 	"By Reference"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$49"
+		    (object Role "$UNNAMED$54"
 			quid       	"5703553F01ED"
 			supplier   	"Use Case View::读者"
 			quidu      	"5703459F01AD")))
-	    (object Association "$UNNAMED$50"
+	    (object Association "$UNNAMED$55"
 		quid       	"57035543013D"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$51"
+		    (object Role "$UNNAMED$56"
 			quid       	"5703554303B3"
 			supplier   	"Use Case View::归还图书"
 			quidu      	"57034AB401AE"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$52"
+		    (object Role "$UNNAMED$57"
 			quid       	"5703554303B5"
 			supplier   	"Use Case View::读者"
 			quidu      	"5703459F01AD")))
-	    (object Association "$UNNAMED$53"
+	    (object Association "$UNNAMED$58"
 		quid       	"570355FD0393"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$54"
+		    (object Role "$UNNAMED$59"
 			quid       	"570355FE029A"
 			supplier   	"Use Case View::借还图书"
 			quidu      	"570355E101BC"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$55"
+		    (object Role "$UNNAMED$60"
 			quid       	"570355FE029C"
 			supplier   	"Use Case View::读者"
 			quidu      	"5703459F01AD")))
-	    (object Association "$UNNAMED$56"
+	    (object Association "$UNNAMED$61"
 		quid       	"570357420318"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$57"
+		    (object Role "$UNNAMED$62"
 			quid       	"570357430157"
 			supplier   	"Use Case View::管理图书系统"
 			quidu      	"5703571800BF"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$58"
+		    (object Role "$UNNAMED$63"
 			quid       	"570357430159"
 			supplier   	"Use Case View::图书管理员"
 			quidu      	"570356C10005")))
-	    (object Association "$UNNAMED$59"
+	    (object Association "$UNNAMED$64"
 		quid       	"570357460205"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$60"
+		    (object Role "$UNNAMED$65"
 			quid       	"570357470080"
 			supplier   	"Use Case View::管理服务系统"
 			quidu      	"570357310089"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$61"
+		    (object Role "$UNNAMED$66"
 			quid       	"570357470082"
 			supplier   	"Use Case View::系统管理员"
 			quidu      	"570345C00219")))
-	    (object Association "$UNNAMED$62"
+	    (object Association "$UNNAMED$67"
 		quid       	"5703586B0199"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$63"
+		    (object Role "$UNNAMED$68"
 			quid       	"5703586C0244"
 			supplier   	"Use Case View::登陆系统"
 			quidu      	"5703467402E0"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$64"
+		    (object Role "$UNNAMED$69"
 			quid       	"5703586C0246"
 			supplier   	"Use Case View::读者"
 			quidu      	"5703459F01AD")))
-	    (object Association "$UNNAMED$65"
+	    (object Association "$UNNAMED$70"
 		quid       	"570358A30366"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$66"
+		    (object Role "$UNNAMED$71"
 			quid       	"570358A4033F"
 			supplier   	"Use Case View::登陆系统"
 			quidu      	"5703467402E0"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$67"
+		    (object Role "$UNNAMED$72"
 			quid       	"570358A40349"
 			supplier   	"Use Case View::图书管理员"
 			quidu      	"570356C10005")))
-	    (object Association "$UNNAMED$68"
+	    (object Association "$UNNAMED$73"
 		quid       	"570358A702DF"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$69"
+		    (object Role "$UNNAMED$74"
 			quid       	"570358A802FF"
 			supplier   	"Use Case View::登陆系统"
 			quidu      	"5703467402E0"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$70"
+		    (object Role "$UNNAMED$75"
 			quid       	"570358A80301"
 			supplier   	"Use Case View::系统管理员"
 			quidu      	"570345C00219")))
-	    (object Association "$UNNAMED$71"
+	    (object Association "$UNNAMED$76"
 		quid       	"57035912036F"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$72"
+		    (object Role "$UNNAMED$77"
 			quid       	"5703591301E0"
 			supplier   	"Use Case View::管理图书系统"
 			quidu      	"5703571800BF"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$73"
+		    (object Role "$UNNAMED$78"
 			quid       	"5703591301E2"
 			supplier   	"Use Case View::图书管理员"
 			quidu      	"570356C10005")))
-	    (object Association "$UNNAMED$74"
+	    (object Association "$UNNAMED$79"
 		quid       	"5703591501E3"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$75"
+		    (object Role "$UNNAMED$80"
 			quid       	"570359160126"
 			supplier   	"Use Case View::管理服务系统"
 			quidu      	"570357310089"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$76"
+		    (object Role "$UNNAMED$81"
 			quid       	"570359160131"
 			supplier   	"Use Case View::系统管理员"
 			quidu      	"570345C00219")))
-	    (object Association "$UNNAMED$77"
+	    (object Association "$UNNAMED$82"
 		quid       	"570359DD0169"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$78"
+		    (object Role "$UNNAMED$83"
 			quid       	"570359DE01B0"
 			supplier   	"Use Case View::查看个人信息"
 			quidu      	"5703598D0145"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$79"
+		    (object Role "$UNNAMED$84"
 			quid       	"570359DE01B2"
 			supplier   	"Use Case View::登陆系统"
 			quidu      	"5703467402E0")))
-	    (object Association "$UNNAMED$80"
+	    (object Association "$UNNAMED$85"
 		quid       	"570359E402B3"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$81"
+		    (object Role "$UNNAMED$86"
 			quid       	"570359E701B3"
 			supplier   	"Use Case View::租借图书"
 			quidu      	"570353AA036F"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$82"
+		    (object Role "$UNNAMED$87"
 			quid       	"570359E701B5"
 			supplier   	"Use Case View::登陆系统"
 			quidu      	"5703467402E0")))
-	    (object Association "$UNNAMED$83"
+	    (object Association "$UNNAMED$88"
 		quid       	"570359EB0141"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$84"
+		    (object Role "$UNNAMED$89"
 			quid       	"570359ED01C6"
 			supplier   	"Use Case View::归还图书"
 			quidu      	"57034AB401AE"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$85"
+		    (object Role "$UNNAMED$90"
 			quid       	"570359ED01C8"
 			supplier   	"Use Case View::登陆系统"
 			quidu      	"5703467402E0")))
-	    (object Association "$UNNAMED$86"
+	    (object Association "$UNNAMED$91"
 		quid       	"570359F400CB"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$87"
+		    (object Role "$UNNAMED$92"
 			quid       	"570359F50195"
 			supplier   	"Use Case View::推荐书目"
 			quidu      	"57034EDC00C8"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$88"
+		    (object Role "$UNNAMED$93"
 			quid       	"570359F50197"
 			supplier   	"Use Case View::登陆系统"
 			quidu      	"5703467402E0")))
-	    (object Association "$UNNAMED$89"
+	    (object Association "$UNNAMED$94"
 		quid       	"57035A0701E1"
 		stereotype 	"include"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$90"
+		    (object Role "$UNNAMED$95"
 			quid       	"57035A080160"
 			supplier   	"Use Case View::检索图书"
 			quidu      	"570359950328"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$91"
+		    (object Role "$UNNAMED$96"
 			quid       	"57035A080162"
 			supplier   	"Use Case View::读者"
 			quidu      	"5703459F01AD")))
-	    (object Association "$UNNAMED$92"
+	    (object Association "$UNNAMED$97"
 		quid       	"57035A0A0159"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$93"
+		    (object Role "$UNNAMED$98"
 			quid       	"57035A0B016F"
 			supplier   	"Use Case View::归还图书"
 			quidu      	"57034AB401AE"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$94"
+		    (object Role "$UNNAMED$99"
 			quid       	"57035A0B0171"
 			supplier   	"Use Case View::读者"
 			quidu      	"5703459F01AD")))
-	    (object Association "$UNNAMED$95"
+	    (object Association "$UNNAMED$100"
 		quid       	"57035A84006E"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$96"
+		    (object Role "$UNNAMED$101"
 			quid       	"57035A8403AD"
 			supplier   	"Use Case View::管理个人信息"
 			quidu      	"57035A7602B3"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$97"
+		    (object Role "$UNNAMED$102"
 			quid       	"57035A8403AF"
 			supplier   	"Use Case View::登陆系统"
 			quidu      	"5703467402E0")))
-	    (object Association "$UNNAMED$98"
+	    (object Association "$UNNAMED$103"
 		quid       	"57035C97022A"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$99"
+		    (object Role "$UNNAMED$104"
 			quid       	"57035C9801AA"
 			supplier   	"Use Case View::修改读者状态"
 			quidu      	"57035C62006C"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$100"
+		    (object Role "$UNNAMED$105"
 			quid       	"57035C9801AC"
 			supplier   	"Use Case View::图书管理员"
 			quidu      	"570356C10005")))
-	    (object Association "$UNNAMED$101"
+	    (object Association "$UNNAMED$106"
 		quid       	"5703617C038B"
 		stereotype 	"include"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$102"
+		    (object Role "$UNNAMED$107"
 			quid       	"5703617D0292"
 			supplier   	"Use Case View::查询图书流通量排行"
 			quidu      	"5703613F02E3"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$103"
+		    (object Role "$UNNAMED$108"
 			quid       	"5703617D0294"
 			supplier   	"Use Case View::读者"
 			quidu      	"5703459F01AD")))
-	    (object Association "$UNNAMED$104"
+	    (object Association "$UNNAMED$109"
 		quid       	"5703617F02A9"
 		stereotype 	"include"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$105"
+		    (object Role "$UNNAMED$110"
 			quid       	"570361800188"
 			supplier   	"Use Case View::查询读者借阅排行"
 			quidu      	"5703614F01C3"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$106"
+		    (object Role "$UNNAMED$111"
 			quid       	"57036180018A"
 			supplier   	"Use Case View::读者"
 			quidu      	"5703459F01AD")))
-	    (object Association "$UNNAMED$107"
+	    (object Association "$UNNAMED$112"
 		quid       	"570361820145"
 		stereotype 	"include"
 		roles      	(list role_list
-		    (object Role "$UNNAMED$108"
+		    (object Role "$UNNAMED$113"
 			quid       	"5703618300E2"
 			supplier   	"Use Case View::查询读者评分排行"
 			quidu      	"57036168007F"
 			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$109"
+		    (object Role "$UNNAMED$114"
 			quid       	"5703618300E4"
 			supplier   	"Use Case View::读者"
 			quidu      	"5703459F01AD")))
+	    (object Association "$UNNAMED$115"
+		quid       	"571A78FE003B"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$116"
+			quid       	"571A79000211"
+			supplier   	"Use Case View::系统管理员权限"
+			quidu      	"571A78130026"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$117"
+			quid       	"571A79000213"
+			supplier   	"Use Case View::系统管理员"
+			quidu      	"570345C00219")))
+	    (object Association "$UNNAMED$118"
+		quid       	"571A790602A7"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$119"
+			quid       	"571A790901FD"
+			supplier   	"Use Case View::图书管理员权限"
+			quidu      	"571A78270256"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$120"
+			quid       	"571A790901FF"
+			supplier   	"Use Case View::图书管理员"
+			quidu      	"570356C10005")))
+	    (object Association "$UNNAMED$121"
+		quid       	"571A79680050"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$122"
+			quid       	"571A79690370"
+			supplier   	"Use Case View::普通用户权限"
+			quidu      	"571A782A00C6"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$123"
+			quid       	"571A79690372"
+			supplier   	"Use Case View::普通用户"
+			quidu      	"5703457C01D5")))
 	    (object Class_Category "NewPackage"
 		quid       	"5703475001CE"
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list)
+		logical_presentations 	(list unit_reference_list))
+	    (object Class_Category "NewPackage2"
+		quid       	"571A721E02F3"
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list)
+		logical_presentations 	(list unit_reference_list))
+	    (object Class_Category "NewPackage3"
+		quid       	"571A77FB036E"
 		exportControl 	"Public"
 		logical_models 	(list unit_reference_list)
 		logical_presentations 	(list unit_reference_list)))
@@ -8419,7 +9962,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object NoteView @378
+		    (object NoteView @451
 			location   	(1040, 560)
 			font       	(object Font
 			    size       	10
@@ -8431,7 +9974,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@378
+			    Parent_View 	@451
 			    location   	(813, 358)
 			    fill_color 	13434879
 			    nlines     	9
@@ -8448,10 +9991,10 @@
 		zoom       	100
 		max_height 	28350
 		max_width  	21600
-		origin_x   	0
-		origin_y   	1925
+		origin_x   	4588
+		origin_y   	2875
 		items      	(list diagram_item_list
-		    (object UseCaseView "Use Case View::预约图书" @379
+		    (object UseCaseView "Use Case View::预约图书" @452
 			location   	(4704, 2480)
 			font       	(object Font
 			    size       	9
@@ -8463,7 +10006,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@379
+			    Parent_View 	@452
 			    location   	(4704, 2618)
 			    anchor_loc 	1
 			    nlines     	2
@@ -8475,7 +10018,7 @@
 			fill_color 	13434879
 			quidu      	"5703552103AB"
 			height     	118)
-		    (object UseCaseView "Use Case View::借阅图书" @380
+		    (object UseCaseView "Use Case View::借阅图书" @453
 			location   	(4704, 2784)
 			font       	(object Font
 			    size       	9
@@ -8487,7 +10030,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@380
+			    Parent_View 	@453
 			    location   	(4704, 2922)
 			    anchor_loc 	1
 			    nlines     	2
@@ -8499,7 +10042,7 @@
 			fill_color 	13434879
 			quidu      	"570355340267"
 			height     	118)
-		    (object UseCaseView "Use Case View::管理服务系统" @381
+		    (object UseCaseView "Use Case View::管理服务系统" @454
 			location   	(3200, 3312)
 			font       	(object Font
 			    size       	9
@@ -8511,7 +10054,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@381
+			    Parent_View 	@454
 			    location   	(3200, 3450)
 			    anchor_loc 	1
 			    nlines     	2
@@ -8523,7 +10066,7 @@
 			fill_color 	13434879
 			quidu      	"570357310089"
 			height     	118)
-		    (object ClassView "Class" "Use Case View::系统管理员" @382
+		    (object ClassView "Class" "Use Case View::系统管理员" @455
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -8538,7 +10081,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@382
+			    Parent_View 	@455
 			    location   	(1312, 3472)
 			    anchor_loc 	1
 			    nlines     	2
@@ -8551,7 +10094,7 @@
 			quidu      	"570345C00219"
 			annotation 	8
 			autoResize 	TRUE)
-		    (object AssociationViewNew "$UNNAMED$74" @383
+		    (object AssociationViewNew "$UNNAMED$79" @456
 			location   	(2229, 3312)
 			font       	(object Font
 			    size       	9
@@ -8566,31 +10109,31 @@
 			line_color 	3342489
 			quidu      	"5703591501E3"
 			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$75" @384
-				Parent_View 	@383
+			    (object RoleView "$UNNAMED$80" @457
+				Parent_View 	@456
 				location   	(1605, 1360)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"570359160126"
-				client     	@383
-				supplier   	@381
+				client     	@456
+				supplier   	@454
 				vertices   	(list Points
 				    (2229, 3312)
 				    (3090, 3312))
 				line_style 	0)
-			    (object RoleView "$UNNAMED$76" @385
-				Parent_View 	@383
+			    (object RoleView "$UNNAMED$81" @458
+				Parent_View 	@456
 				location   	(1605, 1360)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"570359160131"
-				client     	@383
-				supplier   	@382
+				client     	@456
+				supplier   	@455
 				vertices   	(list Points
 				    (2229, 3312)
 				    (1369, 3312))
 				line_style 	0)))
-		    (object UseCaseView "Use Case View::查看个人信息" @386
+		    (object UseCaseView "Use Case View::查看个人信息" @459
 			location   	(3728, 1552)
 			font       	(object Font
 			    size       	9
@@ -8602,7 +10145,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@386
+			    Parent_View 	@459
 			    location   	(3728, 1690)
 			    anchor_loc 	1
 			    nlines     	2
@@ -8614,7 +10157,7 @@
 			fill_color 	13434879
 			quidu      	"5703598D0145"
 			height     	118)
-		    (object UseCaseView "Use Case View::租借图书" @387
+		    (object UseCaseView "Use Case View::租借图书" @460
 			location   	(3696, 2288)
 			font       	(object Font
 			    size       	9
@@ -8626,7 +10169,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@387
+			    Parent_View 	@460
 			    location   	(3696, 2426)
 			    anchor_loc 	1
 			    nlines     	2
@@ -8638,7 +10181,7 @@
 			fill_color 	13434879
 			quidu      	"570353AA036F"
 			height     	118)
-		    (object DependencyView "" @388
+		    (object DependencyView "" @461
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -8648,8 +10191,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @389
-			    Parent_View 	@388
+			stereotype 	(object SegLabel @462
+			    Parent_View 	@461
 			    location   	(4191, 2338)
 			    font       	(object Font
 				size       	9
@@ -8671,13 +10214,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"570355470106"
-			client     	@387
-			supplier   	@379
+			client     	@460
+			supplier   	@452
 			vertices   	(list Points
 			    (3804, 2305)
 			    (4593, 2456))
 			line_style 	0)
-		    (object DependencyView "" @390
+		    (object DependencyView "" @463
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -8687,8 +10230,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @391
-			    Parent_View 	@390
+			stereotype 	(object SegLabel @464
+			    Parent_View 	@463
 			    location   	(4250, 2492)
 			    font       	(object Font
 				size       	9
@@ -8710,13 +10253,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"5703554D02B3"
-			client     	@387
-			supplier   	@380
+			client     	@460
+			supplier   	@453
 			vertices   	(list Points
 			    (3804, 2340)
 			    (4593, 2728))
 			line_style 	0)
-		    (object UseCaseView "Use Case View::推荐书目" @392
+		    (object UseCaseView "Use Case View::推荐书目" @465
 			location   	(3728, 2736)
 			font       	(object Font
 			    size       	9
@@ -8728,7 +10271,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@392
+			    Parent_View 	@465
 			    location   	(3728, 2874)
 			    anchor_loc 	1
 			    nlines     	2
@@ -8740,7 +10283,7 @@
 			fill_color 	13434879
 			quidu      	"57034EDC00C8"
 			height     	118)
-		    (object UseCaseView "Use Case View::管理个人信息" @393
+		    (object UseCaseView "Use Case View::管理个人信息" @466
 			location   	(3696, 1920)
 			font       	(object Font
 			    size       	9
@@ -8752,7 +10295,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@393
+			    Parent_View 	@466
 			    location   	(3696, 2058)
 			    anchor_loc 	1
 			    nlines     	2
@@ -8764,7 +10307,7 @@
 			fill_color 	13434879
 			quidu      	"57035A7602B3"
 			height     	118)
-		    (object UseCaseView "Use Case View::交付赔款" @394
+		    (object UseCaseView "Use Case View::交付赔款" @467
 			location   	(4720, 1408)
 			font       	(object Font
 			    size       	9
@@ -8776,7 +10319,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@394
+			    Parent_View 	@467
 			    location   	(4720, 1546)
 			    anchor_loc 	1
 			    nlines     	2
@@ -8788,7 +10331,7 @@
 			fill_color 	13434879
 			quidu      	"57035AE1004A"
 			height     	118)
-		    (object UseCaseView "Use Case View::续借图书" @395
+		    (object UseCaseView "Use Case View::续借图书" @468
 			location   	(4720, 1696)
 			font       	(object Font
 			    size       	9
@@ -8800,7 +10343,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@395
+			    Parent_View 	@468
 			    location   	(4720, 1834)
 			    anchor_loc 	1
 			    nlines     	2
@@ -8812,7 +10355,7 @@
 			fill_color 	13434879
 			quidu      	"57035AEE0125"
 			height     	118)
-		    (object DependencyView "" @396
+		    (object DependencyView "" @469
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -8822,8 +10365,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @397
-			    Parent_View 	@396
+			stereotype 	(object SegLabel @470
+			    Parent_View 	@469
 			    location   	(4159, 1620)
 			    font       	(object Font
 				size       	9
@@ -8845,13 +10388,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"57035B6D01A0"
-			client     	@393
-			supplier   	@394
+			client     	@466
+			supplier   	@467
 			vertices   	(list Points
 			    (3804, 1862)
-			    (4609, 1460))
+			    (4399, 1567))
 			line_style 	0)
-		    (object DependencyView "" @398
+		    (object DependencyView "" @471
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -8861,8 +10404,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @399
-			    Parent_View 	@398
+			stereotype 	(object SegLabel @472
+			    Parent_View 	@471
 			    location   	(4169, 1787)
 			    font       	(object Font
 				size       	9
@@ -8884,13 +10427,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"57035B700258"
-			client     	@393
-			supplier   	@395
+			client     	@466
+			supplier   	@468
 			vertices   	(list Points
 			    (3804, 1893)
 			    (4609, 1717))
 			line_style 	0)
-		    (object UseCaseView "Use Case View::挂失读者证" @400
+		    (object UseCaseView "Use Case View::挂失读者证" @473
 			location   	(4720, 1936)
 			font       	(object Font
 			    size       	9
@@ -8902,7 +10445,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@400
+			    Parent_View 	@473
 			    location   	(4720, 2074)
 			    anchor_loc 	1
 			    nlines     	2
@@ -8914,7 +10457,7 @@
 			fill_color 	13434879
 			quidu      	"57035BC002E0"
 			height     	118)
-		    (object DependencyView "" @401
+		    (object DependencyView "" @474
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -8924,8 +10467,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @402
-			    Parent_View 	@401
+			stereotype 	(object SegLabel @475
+			    Parent_View 	@474
 			    location   	(4196, 1901)
 			    font       	(object Font
 				size       	9
@@ -8947,13 +10490,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"57035BD1009F"
-			client     	@393
-			supplier   	@400
+			client     	@466
+			supplier   	@473
 			vertices   	(list Points
 			    (3804, 1919)
 			    (4609, 1932))
 			line_style 	0)
-		    (object UseCaseView "Use Case View::管理登陆口令" @403
+		    (object UseCaseView "Use Case View::管理登陆口令" @476
 			location   	(4704, 2208)
 			font       	(object Font
 			    size       	9
@@ -8965,7 +10508,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@403
+			    Parent_View 	@476
 			    location   	(4704, 2346)
 			    anchor_loc 	1
 			    nlines     	2
@@ -8977,7 +10520,7 @@
 			fill_color 	13434879
 			quidu      	"57035C0C02FD"
 			height     	118)
-		    (object DependencyView "" @404
+		    (object DependencyView "" @477
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -8987,8 +10530,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @405
-			    Parent_View 	@404
+			stereotype 	(object SegLabel @478
+			    Parent_View 	@477
 			    location   	(4167, 2007)
 			    font       	(object Font
 				size       	9
@@ -9010,13 +10553,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"57035C210271"
-			client     	@393
-			supplier   	@403
+			client     	@466
+			supplier   	@476
 			vertices   	(list Points
 			    (3804, 1949)
 			    (4593, 2174))
 			line_style 	0)
-		    (object UseCaseView "Use Case View::管理图书系统" @406
+		    (object UseCaseView "Use Case View::管理图书系统" @479
 			location   	(3200, 592)
 			font       	(object Font
 			    size       	9
@@ -9028,7 +10571,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@406
+			    Parent_View 	@479
 			    location   	(3200, 730)
 			    anchor_loc 	1
 			    nlines     	2
@@ -9040,7 +10583,7 @@
 			fill_color 	13434879
 			quidu      	"5703571800BF"
 			height     	118)
-		    (object UseCaseView "Use Case View::修改读者状态" @407
+		    (object UseCaseView "Use Case View::修改读者状态" @480
 			location   	(2064, 1344)
 			font       	(object Font
 			    size       	9
@@ -9052,7 +10595,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@407
+			    Parent_View 	@480
 			    location   	(2064, 1482)
 			    anchor_loc 	1
 			    nlines     	2
@@ -9064,7 +10607,7 @@
 			fill_color 	13434879
 			quidu      	"57035C62006C"
 			height     	118)
-		    (object ClassView "Class" "Use Case View::图书管理员" @408
+		    (object ClassView "Class" "Use Case View::图书管理员" @481
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -9079,7 +10622,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@408
+			    Parent_View 	@481
 			    location   	(1312, 752)
 			    anchor_loc 	1
 			    nlines     	2
@@ -9092,7 +10635,7 @@
 			quidu      	"570356C10005"
 			annotation 	8
 			autoResize 	TRUE)
-		    (object AssociationViewNew "$UNNAMED$71" @409
+		    (object AssociationViewNew "$UNNAMED$76" @482
 			location   	(2229, 592)
 			font       	(object Font
 			    size       	9
@@ -9107,31 +10650,31 @@
 			line_color 	3342489
 			quidu      	"57035912036F"
 			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$72" @410
-				Parent_View 	@409
+			    (object RoleView "$UNNAMED$77" @483
+				Parent_View 	@482
 				location   	(1253, -912)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"5703591301E0"
-				client     	@409
-				supplier   	@406
+				client     	@482
+				supplier   	@479
 				vertices   	(list Points
 				    (2229, 592)
 				    (3090, 592))
 				line_style 	0)
-			    (object RoleView "$UNNAMED$73" @411
-				Parent_View 	@409
+			    (object RoleView "$UNNAMED$78" @484
+				Parent_View 	@482
 				location   	(1253, -912)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"5703591301E2"
-				client     	@409
-				supplier   	@408
+				client     	@482
+				supplier   	@481
 				vertices   	(list Points
 				    (2229, 592)
 				    (1369, 592))
 				line_style 	0)))
-		    (object AssociationViewNew "$UNNAMED$98" @412
+		    (object AssociationViewNew "$UNNAMED$103" @485
 			location   	(1701, 981)
 			font       	(object Font
 			    size       	9
@@ -9146,31 +10689,31 @@
 			line_color 	3342489
 			quidu      	"57035C97022A"
 			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$99" @413
-				Parent_View 	@412
+			    (object RoleView "$UNNAMED$104" @486
+				Parent_View 	@485
 				location   	(517, 613)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"57035C9801AA"
-				client     	@412
-				supplier   	@407
+				client     	@485
+				supplier   	@480
 				vertices   	(list Points
 				    (1701, 981)
-				    (2004, 1284))
+				    (2004, 1286))
 				line_style 	0)
-			    (object RoleView "$UNNAMED$100" @414
-				Parent_View 	@412
+			    (object RoleView "$UNNAMED$105" @487
+				Parent_View 	@485
 				location   	(517, 613)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"57035C9801AC"
-				client     	@412
-				supplier   	@408
+				client     	@485
+				supplier   	@481
 				vertices   	(list Points
 				    (1701, 981)
-				    (1398, 678))
+				    (1369, 649))
 				line_style 	0)))
-		    (object UseCaseView "Use Case View::扣除罚款" @415
+		    (object UseCaseView "Use Case View::扣除罚款" @488
 			location   	(2480, 960)
 			font       	(object Font
 			    size       	9
@@ -9182,7 +10725,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@415
+			    Parent_View 	@488
 			    location   	(2480, 1098)
 			    anchor_loc 	1
 			    nlines     	2
@@ -9194,7 +10737,7 @@
 			fill_color 	13434879
 			quidu      	"57035E0B02E4"
 			height     	118)
-		    (object UseCaseView "Use Case View::删减读者借阅书目" @416
+		    (object UseCaseView "Use Case View::删减读者借阅书目" @489
 			location   	(2576, 1344)
 			font       	(object Font
 			    size       	9
@@ -9206,7 +10749,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@416
+			    Parent_View 	@489
 			    location   	(2576, 1482)
 			    anchor_loc 	1
 			    nlines     	2
@@ -9218,7 +10761,7 @@
 			fill_color 	13434879
 			quidu      	"57035E1801CA"
 			height     	118)
-		    (object DependencyView "" @417
+		    (object DependencyView "" @490
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -9228,8 +10771,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @418
-			    Parent_View 	@417
+			stereotype 	(object SegLabel @491
+			    Parent_View 	@490
 			    location   	(2187, 1128)
 			    font       	(object Font
 				size       	9
@@ -9251,13 +10794,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"57035E680066"
-			client     	@407
-			supplier   	@415
+			client     	@480
+			supplier   	@488
 			vertices   	(list Points
 			    (2120, 1286)
-			    (2396, 1031))
+			    (2306, 1121))
 			line_style 	0)
-		    (object DependencyView "" @419
+		    (object DependencyView "" @492
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -9267,8 +10810,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @420
-			    Parent_View 	@419
+			stereotype 	(object SegLabel @493
+			    Parent_View 	@492
 			    location   	(2319, 1320)
 			    font       	(object Font
 				size       	9
@@ -9290,13 +10833,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"57035E720129"
-			client     	@407
-			supplier   	@416
+			client     	@480
+			supplier   	@489
 			vertices   	(list Points
 			    (2172, 1344)
 			    (2465, 1344))
 			line_style 	0)
-		    (object UseCaseView "Use Case View::配置用户权限" @421
+		    (object UseCaseView "Use Case View::配置用户权限" @494
 			location   	(3760, 3152)
 			font       	(object Font
 			    size       	9
@@ -9308,7 +10851,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@421
+			    Parent_View 	@494
 			    location   	(3760, 3290)
 			    anchor_loc 	1
 			    nlines     	2
@@ -9320,7 +10863,7 @@
 			fill_color 	13434879
 			quidu      	"57035FFC0342"
 			height     	118)
-		    (object UseCaseView "Use Case View::管理工作站" @422
+		    (object UseCaseView "Use Case View::管理工作站" @495
 			location   	(3776, 3616)
 			font       	(object Font
 			    size       	9
@@ -9332,7 +10875,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@422
+			    Parent_View 	@495
 			    location   	(3776, 3754)
 			    anchor_loc 	1
 			    nlines     	2
@@ -9344,7 +10887,7 @@
 			fill_color 	13434879
 			quidu      	"5703600A027A"
 			height     	118)
-		    (object UseCaseView "Use Case View::备份数据库" @423
+		    (object UseCaseView "Use Case View::备份数据库" @496
 			location   	(3392, 3920)
 			font       	(object Font
 			    size       	9
@@ -9356,7 +10899,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@423
+			    Parent_View 	@496
 			    location   	(3392, 4058)
 			    anchor_loc 	1
 			    nlines     	2
@@ -9368,7 +10911,7 @@
 			fill_color 	13434879
 			quidu      	"5703602D00EA"
 			height     	118)
-		    (object UseCaseView "Use Case View::恢复数据库" @424
+		    (object UseCaseView "Use Case View::恢复数据库" @497
 			location   	(2816, 3952)
 			font       	(object Font
 			    size       	9
@@ -9380,7 +10923,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@424
+			    Parent_View 	@497
 			    location   	(2816, 4090)
 			    anchor_loc 	1
 			    nlines     	2
@@ -9392,7 +10935,7 @@
 			fill_color 	13434879
 			quidu      	"57036037018F"
 			height     	118)
-		    (object DependencyView "" @425
+		    (object DependencyView "" @498
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -9402,8 +10945,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @426
-			    Parent_View 	@425
+			stereotype 	(object SegLabel @499
+			    Parent_View 	@498
 			    location   	(3468, 3191)
 			    font       	(object Font
 				size       	9
@@ -9425,13 +10968,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"5703604E001F"
-			client     	@381
-			supplier   	@421
+			client     	@454
+			supplier   	@494
 			vertices   	(list Points
 			    (3308, 3277)
 			    (3650, 3179))
 			line_style 	0)
-		    (object DependencyView "" @427
+		    (object DependencyView "" @500
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -9441,8 +10984,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @428
-			    Parent_View 	@427
+			stereotype 	(object SegLabel @501
+			    Parent_View 	@500
 			    location   	(3512, 3422)
 			    font       	(object Font
 				size       	9
@@ -9464,13 +11007,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"57036057019F"
-			client     	@381
-			supplier   	@422
+			client     	@454
+			supplier   	@495
 			vertices   	(list Points
 			    (3317, 3371)
 			    (3667, 3558))
 			line_style 	0)
-		    (object DependencyView "" @429
+		    (object DependencyView "" @502
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -9480,8 +11023,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @430
-			    Parent_View 	@429
+			stereotype 	(object SegLabel @503
+			    Parent_View 	@502
 			    location   	(3414, 3636)
 			    font       	(object Font
 				size       	9
@@ -9503,13 +11046,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"570360610045"
-			client     	@381
-			supplier   	@423
+			client     	@454
+			supplier   	@496
 			vertices   	(list Points
 			    (3249, 3473)
 			    (3372, 3862))
 			line_style 	0)
-		    (object DependencyView "" @431
+		    (object DependencyView "" @504
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -9519,8 +11062,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @432
-			    Parent_View 	@431
+			stereotype 	(object SegLabel @505
+			    Parent_View 	@504
 			    location   	(3066, 3739)
 			    font       	(object Font
 				size       	9
@@ -9542,13 +11085,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"57036068033E"
-			client     	@381
-			supplier   	@424
+			client     	@454
+			supplier   	@497
 			vertices   	(list Points
 			    (3099, 3473)
 			    (2847, 3894))
 			line_style 	0)
-		    (object UseCaseView "Use Case View::查询借出图书" @433
+		    (object UseCaseView "Use Case View::查询借出图书" @506
 			location   	(3728, 112)
 			font       	(object Font
 			    size       	9
@@ -9560,7 +11103,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@433
+			    Parent_View 	@506
 			    location   	(3728, 250)
 			    anchor_loc 	1
 			    nlines     	2
@@ -9572,8 +11115,8 @@
 			fill_color 	13434879
 			quidu      	"570360AE037A"
 			height     	118)
-		    (object UseCaseView "Use Case View::催还图书" @434
-			location   	(3728, 416)
+		    (object UseCaseView "Use Case View::手动催还图书" @507
+			location   	(3728, 352)
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -9584,20 +11127,20 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@434
-			    location   	(3728, 554)
+			    Parent_View 	@507
+			    location   	(3728, 490)
 			    anchor_loc 	1
 			    nlines     	2
 			    max_width  	630
 			    justify    	0
-			    label      	"催还图书")
+			    label      	"手动催还图书")
 			icon_style 	"Icon"
 			line_color 	3342489
 			fill_color 	13434879
 			quidu      	"570360C80129"
 			height     	118)
-		    (object UseCaseView "Use Case View::查询分馆信息" @435
-			location   	(3728, 720)
+		    (object UseCaseView "Use Case View::查询分馆信息" @508
+			location   	(3744, 784)
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -9608,8 +11151,8 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@435
-			    location   	(3728, 858)
+			    Parent_View 	@508
+			    location   	(3744, 922)
 			    anchor_loc 	1
 			    nlines     	2
 			    max_width  	630
@@ -9620,7 +11163,7 @@
 			fill_color 	13434879
 			quidu      	"570361030142"
 			height     	118)
-		    (object UseCaseView "Use Case View::馆际借阅图书" @436
+		    (object UseCaseView "Use Case View::馆际借阅图书" @509
 			location   	(3728, 1040)
 			font       	(object Font
 			    size       	9
@@ -9632,7 +11175,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@436
+			    Parent_View 	@509
 			    location   	(3728, 1178)
 			    anchor_loc 	1
 			    nlines     	2
@@ -9644,7 +11187,7 @@
 			fill_color 	13434879
 			quidu      	"5703611800DE"
 			height     	118)
-		    (object UseCaseView "Use Case View::登陆系统" @437
+		    (object UseCaseView "Use Case View::登陆系统" @510
 			location   	(3200, 2176)
 			font       	(object Font
 			    size       	9
@@ -9656,7 +11199,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@437
+			    Parent_View 	@510
 			    location   	(3200, 2314)
 			    anchor_loc 	1
 			    nlines     	2
@@ -9668,7 +11211,7 @@
 			fill_color 	13434879
 			quidu      	"5703467402E0"
 			height     	118)
-		    (object DependencyView "" @438
+		    (object DependencyView "" @511
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -9678,8 +11221,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @439
-			    Parent_View 	@438
+			stereotype 	(object SegLabel @512
+			    Parent_View 	@511
 			    location   	(3101, 1365)
 			    font       	(object Font
 				size       	9
@@ -9701,13 +11244,13 @@
 			    orientation 	1)
 			line_color 	3342489
 			quidu      	"5703577E001B"
-			client     	@406
-			supplier   	@437
+			client     	@479
+			supplier   	@510
 			vertices   	(list Points
 			    (3200, 753)
 			    (3200, 2117))
 			line_style 	0)
-		    (object DependencyView "" @440
+		    (object DependencyView "" @513
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -9717,8 +11260,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @441
-			    Parent_View 	@440
+			stereotype 	(object SegLabel @514
+			    Parent_View 	@513
 			    location   	(3098, 2799)
 			    font       	(object Font
 				size       	9
@@ -9740,13 +11283,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"570357810323"
-			client     	@381
-			supplier   	@437
+			client     	@454
+			supplier   	@510
 			vertices   	(list Points
 			    (3200, 3254)
 			    (3200, 2337))
 			line_style 	0)
-		    (object DependencyView "" @442
+		    (object DependencyView "" @515
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -9756,8 +11299,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @443
-			    Parent_View 	@442
+			stereotype 	(object SegLabel @516
+			    Parent_View 	@515
 			    location   	(3357, 1904)
 			    font       	(object Font
 				size       	9
@@ -9779,13 +11322,13 @@
 			    orientation 	1)
 			line_color 	3342489
 			quidu      	"57035B1C02DA"
-			client     	@386
-			supplier   	@437
+			client     	@459
+			supplier   	@510
 			vertices   	(list Points
-			    (3610, 1691)
+			    (3592, 1713)
 			    (3243, 2117))
 			line_style 	0)
-		    (object DependencyView "" @444
+		    (object DependencyView "" @517
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -9795,8 +11338,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @445
-			    Parent_View 	@444
+			stereotype 	(object SegLabel @518
+			    Parent_View 	@517
 			    location   	(3424, 2013)
 			    font       	(object Font
 				size       	9
@@ -9818,13 +11361,13 @@
 			    orientation 	1)
 			line_color 	3342489
 			quidu      	"57035B2000CD"
-			client     	@393
-			supplier   	@437
+			client     	@466
+			supplier   	@510
 			vertices   	(list Points
 			    (3578, 1978)
 			    (3302, 2118))
 			line_style 	0)
-		    (object DependencyView "" @446
+		    (object DependencyView "" @519
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -9834,8 +11377,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @447
-			    Parent_View 	@446
+			stereotype 	(object SegLabel @520
+			    Parent_View 	@519
 			    location   	(3458, 2204)
 			    font       	(object Font
 				size       	9
@@ -9857,13 +11400,13 @@
 			    orientation 	1)
 			line_color 	3342489
 			quidu      	"57035B230045"
-			client     	@387
-			supplier   	@437
+			client     	@460
+			supplier   	@510
 			vertices   	(list Points
 			    (3584, 2260)
 			    (3308, 2199))
 			line_style 	0)
-		    (object DependencyView "" @448
+		    (object DependencyView "" @521
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -9873,8 +11416,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @449
-			    Parent_View 	@448
+			stereotype 	(object SegLabel @522
+			    Parent_View 	@521
 			    location   	(3528, 2417)
 			    font       	(object Font
 				size       	9
@@ -9896,13 +11439,13 @@
 			    orientation 	1)
 			line_color 	3342489
 			quidu      	"57035B2503AF"
-			client     	@392
-			supplier   	@437
+			client     	@465
+			supplier   	@510
 			vertices   	(list Points
 			    (3672, 2677)
 			    (3280, 2262))
 			line_style 	0)
-		    (object DependencyView "" @450
+		    (object DependencyView "" @523
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -9912,8 +11455,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @451
-			    Parent_View 	@450
+			stereotype 	(object SegLabel @524
+			    Parent_View 	@523
 			    location   	(2534, 1811)
 			    font       	(object Font
 				size       	9
@@ -9935,13 +11478,13 @@
 			    orientation 	1)
 			line_color 	3342489
 			quidu      	"57035D4001DD"
-			client     	@407
-			supplier   	@437
+			client     	@480
+			supplier   	@510
 			vertices   	(list Points
-			    (2181, 1427)
+			    (2287, 1505)
 			    (3120, 2117))
 			line_style 	0)
-		    (object UseCaseView "Use Case View::检索图书" @452
+		    (object UseCaseView "Use Case View::检索图书" @525
 			location   	(640, 1664)
 			font       	(object Font
 			    size       	9
@@ -9953,7 +11496,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@452
+			    Parent_View 	@525
 			    location   	(640, 1802)
 			    anchor_loc 	1
 			    nlines     	2
@@ -9965,7 +11508,7 @@
 			fill_color 	13434879
 			quidu      	"570359950328"
 			height     	118)
-		    (object UseCaseView "Use Case View::归还图书" @453
+		    (object UseCaseView "Use Case View::归还图书" @526
 			location   	(1792, 1840)
 			font       	(object Font
 			    size       	9
@@ -9977,7 +11520,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@453
+			    Parent_View 	@526
 			    location   	(1792, 1978)
 			    anchor_loc 	1
 			    nlines     	2
@@ -9989,7 +11532,7 @@
 			fill_color 	13434879
 			quidu      	"57034AB401AE"
 			height     	118)
-		    (object DependencyView "" @454
+		    (object DependencyView "" @527
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -9999,8 +11542,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @455
-			    Parent_View 	@454
+			stereotype 	(object SegLabel @528
+			    Parent_View 	@527
 			    location   	(1817, 1653)
 			    font       	(object Font
 				size       	9
@@ -10022,13 +11565,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"57035C6D00D6"
-			client     	@453
-			supplier   	@407
+			client     	@526
+			supplier   	@480
 			vertices   	(list Points
 			    (1819, 1781)
 			    (1971, 1505))
 			line_style 	0)
-		    (object UseCaseView "Use Case View::查询图书流通量排行" @456
+		    (object UseCaseView "Use Case View::查询图书流通量排行" @529
 			location   	(656, 2096)
 			font       	(object Font
 			    size       	9
@@ -10040,7 +11583,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@456
+			    Parent_View 	@529
 			    location   	(656, 2234)
 			    anchor_loc 	1
 			    nlines     	2
@@ -10052,7 +11595,7 @@
 			fill_color 	13434879
 			quidu      	"5703613F02E3"
 			height     	118)
-		    (object UseCaseView "Use Case View::查询读者借阅排行" @457
+		    (object UseCaseView "Use Case View::查询读者借阅排行" @530
 			location   	(656, 2448)
 			font       	(object Font
 			    size       	9
@@ -10064,7 +11607,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@457
+			    Parent_View 	@530
 			    location   	(656, 2586)
 			    anchor_loc 	1
 			    nlines     	2
@@ -10076,7 +11619,7 @@
 			fill_color 	13434879
 			quidu      	"5703614F01C3"
 			height     	118)
-		    (object UseCaseView "Use Case View::查询读者评分排行" @458
+		    (object UseCaseView "Use Case View::查询读者评分排行" @531
 			location   	(656, 2832)
 			font       	(object Font
 			    size       	9
@@ -10088,7 +11631,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@458
+			    Parent_View 	@531
 			    location   	(656, 2970)
 			    anchor_loc 	1
 			    nlines     	2
@@ -10100,7 +11643,7 @@
 			fill_color 	13434879
 			quidu      	"57036168007F"
 			height     	118)
-		    (object ClassView "Class" "Use Case View::读者" @459
+		    (object ClassView "Class" "Use Case View::读者" @532
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -10115,7 +11658,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@459
+			    Parent_View 	@532
 			    location   	(1312, 2336)
 			    anchor_loc 	1
 			    nlines     	2
@@ -10128,27 +11671,27 @@
 			quidu      	"5703459F01AD"
 			annotation 	8
 			autoResize 	TRUE)
-		    (object InheritView "" @460
+		    (object InheritView "" @533
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"570357F3007E"
-			client     	@382
-			supplier   	@459
+			client     	@455
+			supplier   	@532
 			vertices   	(list Points
 			    (1312, 3232)
 			    (1312, 2359))
 			line_style 	0)
-		    (object InheritView "" @461
+		    (object InheritView "" @534
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"570357F90267"
-			client     	@408
-			supplier   	@459
+			client     	@481
+			supplier   	@532
 			vertices   	(list Points
 			    (1312, 775)
 			    (1312, 2094))
 			line_style 	0)
-		    (object AssociationViewNew "$UNNAMED$62" @462
+		    (object AssociationViewNew "$UNNAMED$67" @535
 			location   	(2229, 2176)
 			font       	(object Font
 			    size       	9
@@ -10163,31 +11706,31 @@
 			line_color 	3342489
 			quidu      	"5703586B0199"
 			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$63" @463
-				Parent_View 	@462
+			    (object RoleView "$UNNAMED$68" @536
+				Parent_View 	@535
 				location   	(1605, 1248)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"5703586C0244"
-				client     	@462
-				supplier   	@437
+				client     	@535
+				supplier   	@510
 				vertices   	(list Points
 				    (2229, 2176)
 				    (3090, 2176))
 				line_style 	0)
-			    (object RoleView "$UNNAMED$64" @464
-				Parent_View 	@462
+			    (object RoleView "$UNNAMED$69" @537
+				Parent_View 	@535
 				location   	(1605, 1248)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"5703586C0246"
-				client     	@462
-				supplier   	@459
+				client     	@535
+				supplier   	@532
 				vertices   	(list Points
 				    (2229, 2176)
 				    (1369, 2176))
 				line_style 	0)))
-		    (object AssociationViewNew "$UNNAMED$89" @465
+		    (object AssociationViewNew "$UNNAMED$94" @538
 			location   	(986, 1927)
 			font       	(object Font
 			    size       	9
@@ -10198,8 +11741,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @466
-			    Parent_View 	@465
+			stereotype 	(object SegLabel @539
+			    Parent_View 	@538
 			    location   	(986, 1820)
 			    font       	(object Font
 				size       	9
@@ -10222,31 +11765,31 @@
 			line_color 	3342489
 			quidu      	"57035A0701E1"
 			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$90" @467
-				Parent_View 	@465
+			    (object RoleView "$UNNAMED$95" @540
+				Parent_View 	@538
 				location   	(346, 775)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"57035A080160"
-				client     	@465
-				supplier   	@452
+				client     	@538
+				supplier   	@525
 				vertices   	(list Points
 				    (986, 1927)
-				    (720, 1725))
+				    (852, 1825))
 				line_style 	0)
-			    (object RoleView "$UNNAMED$91" @468
-				Parent_View 	@465
+			    (object RoleView "$UNNAMED$96" @541
+				Parent_View 	@538
 				location   	(346, 775)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"57035A080162"
-				client     	@465
-				supplier   	@459
+				client     	@538
+				supplier   	@532
 				vertices   	(list Points
 				    (986, 1927)
-				    (1252, 2130))
+				    (1251, 2127))
 				line_style 	0)))
-		    (object AssociationViewNew "$UNNAMED$92" @469
+		    (object AssociationViewNew "$UNNAMED$97" @542
 			location   	(1538, 2014)
 			font       	(object Font
 			    size       	9
@@ -10261,31 +11804,31 @@
 			line_color 	3342489
 			quidu      	"57035A0A0159"
 			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$93" @470
-				Parent_View 	@469
+			    (object RoleView "$UNNAMED$98" @543
+				Parent_View 	@542
 				location   	(898, 862)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"57035A0B016F"
-				client     	@469
-				supplier   	@453
+				client     	@542
+				supplier   	@526
 				vertices   	(list Points
 				    (1538, 2014)
-				    (1707, 1896))
+				    (1792, 1840))
 				line_style 	0)
-			    (object RoleView "$UNNAMED$94" @471
-				Parent_View 	@469
+			    (object RoleView "$UNNAMED$99" @544
+				Parent_View 	@542
 				location   	(898, 862)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"57035A0B0171"
-				client     	@469
-				supplier   	@459
+				client     	@542
+				supplier   	@532
 				vertices   	(list Points
 				    (1538, 2014)
-				    (1369, 2132))
+				    (1369, 2130))
 				line_style 	0)))
-		    (object AssociationViewNew "$UNNAMED$101" @472
+		    (object AssociationViewNew "$UNNAMED$106" @545
 			location   	(1007, 2136)
 			font       	(object Font
 			    size       	9
@@ -10296,8 +11839,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @473
-			    Parent_View 	@472
+			stereotype 	(object SegLabel @546
+			    Parent_View 	@545
 			    location   	(1007, 2029)
 			    font       	(object Font
 				size       	9
@@ -10320,31 +11863,31 @@
 			line_color 	3342489
 			quidu      	"5703617C038B"
 			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$102" @474
-				Parent_View 	@472
+			    (object RoleView "$UNNAMED$107" @547
+				Parent_View 	@545
 				location   	(-305, -40)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"5703617D0292"
-				client     	@472
-				supplier   	@456
+				client     	@545
+				supplier   	@529
 				vertices   	(list Points
 				    (1007, 2136)
 				    (764, 2107))
 				line_style 	0)
-			    (object RoleView "$UNNAMED$103" @475
-				Parent_View 	@472
+			    (object RoleView "$UNNAMED$108" @548
+				Parent_View 	@545
 				location   	(-305, -40)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"5703617D0294"
-				client     	@472
-				supplier   	@459
+				client     	@545
+				supplier   	@532
 				vertices   	(list Points
 				    (1007, 2136)
-				    (1251, 2166))
+				    (1253, 2164))
 				line_style 	0)))
-		    (object AssociationViewNew "$UNNAMED$104" @476
+		    (object AssociationViewNew "$UNNAMED$109" @549
 			location   	(1007, 2299)
 			font       	(object Font
 			    size       	9
@@ -10355,8 +11898,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @477
-			    Parent_View 	@476
+			stereotype 	(object SegLabel @550
+			    Parent_View 	@549
 			    location   	(1007, 2192)
 			    font       	(object Font
 				size       	9
@@ -10379,32 +11922,32 @@
 			line_color 	3342489
 			quidu      	"5703617F02A9"
 			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$105" @478
-				Parent_View 	@476
+			    (object RoleView "$UNNAMED$110" @551
+				Parent_View 	@549
 				location   	(-305, 123)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"570361800188"
-				client     	@476
-				supplier   	@457
+				client     	@549
+				supplier   	@530
 				vertices   	(list Points
 				    (1007, 2299)
-				    (764, 2400))
+				    (764, 2401))
 				line_style 	0)
-			    (object RoleView "$UNNAMED$106" @479
-				Parent_View 	@476
+			    (object RoleView "$UNNAMED$111" @552
+				Parent_View 	@549
 				location   	(-305, 123)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"57036180018A"
-				client     	@476
-				supplier   	@459
+				client     	@549
+				supplier   	@532
 				vertices   	(list Points
 				    (1007, 2299)
-				    (1251, 2198))
+				    (1253, 2196))
 				line_style 	0)))
-		    (object AssociationViewNew "$UNNAMED$107" @480
-			location   	(980, 2502)
+		    (object AssociationViewNew "$UNNAMED$112" @553
+			location   	(967, 2518)
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -10414,9 +11957,9 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @481
-			    Parent_View 	@480
-			    location   	(980, 2395)
+			stereotype 	(object SegLabel @554
+			    Parent_View 	@553
+			    location   	(967, 2411)
 			    font       	(object Font
 				size       	9
 				face       	"Arial"
@@ -10438,31 +11981,31 @@
 			line_color 	3342489
 			quidu      	"570361820145"
 			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$108" @482
-				Parent_View 	@480
-				location   	(-332, 326)
+			    (object RoleView "$UNNAMED$113" @555
+				Parent_View 	@553
+				location   	(-345, 342)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"5703618300E2"
-				client     	@480
-				supplier   	@458
+				client     	@553
+				supplier   	@531
 				vertices   	(list Points
-				    (980, 2502)
+				    (967, 2518)
 				    (709, 2773))
 				line_style 	0)
-			    (object RoleView "$UNNAMED$109" @483
-				Parent_View 	@480
-				location   	(-332, 326)
+			    (object RoleView "$UNNAMED$114" @556
+				Parent_View 	@553
+				location   	(-345, 342)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"5703618300E4"
-				client     	@480
-				supplier   	@459
+				client     	@553
+				supplier   	@532
 				vertices   	(list Points
-				    (980, 2502)
-				    (1251, 2232))
+				    (967, 2518)
+				    (1225, 2263))
 				line_style 	0)))
-		    (object DependencyView "" @484
+		    (object DependencyView "" @557
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -10472,8 +12015,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @485
-			    Parent_View 	@484
+			stereotype 	(object SegLabel @558
+			    Parent_View 	@557
 			    location   	(3393, 315)
 			    font       	(object Font
 				size       	9
@@ -10495,13 +12038,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"5703618A0359"
-			client     	@406
-			supplier   	@433
+			client     	@479
+			supplier   	@506
 			vertices   	(list Points
 			    (3256, 534)
-			    (3610, 219))
+			    (3551, 273))
 			line_style 	0)
-		    (object DependencyView "" @486
+		    (object DependencyView "" @559
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -10511,9 +12054,9 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @487
-			    Parent_View 	@486
-			    location   	(3444, 461)
+			stereotype 	(object SegLabel @560
+			    Parent_View 	@559
+			    location   	(3438, 432)
 			    font       	(object Font
 				size       	9
 				face       	"Arial"
@@ -10534,13 +12077,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"5703618E021E"
-			client     	@406
-			supplier   	@434
+			client     	@479
+			supplier   	@507
 			vertices   	(list Points
-			    (3308, 552)
-			    (3618, 451))
+			    (3308, 540)
+			    (3407, 495))
 			line_style 	0)
-		    (object DependencyView "" @488
+		    (object DependencyView "" @561
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -10550,9 +12093,9 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @489
-			    Parent_View 	@488
-			    location   	(3473, 598)
+			stereotype 	(object SegLabel @562
+			    Parent_View 	@561
+			    location   	(3488, 632)
 			    font       	(object Font
 				size       	9
 				face       	"Arial"
@@ -10573,13 +12116,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"57036191010A"
-			client     	@406
-			supplier   	@435
+			client     	@479
+			supplier   	@508
 			vertices   	(list Points
-			    (3308, 616)
-			    (3618, 690))
+			    (3520, 701)
+			    (3634, 743))
 			line_style 	0)
-		    (object DependencyView "" @490
+		    (object DependencyView "" @563
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -10589,8 +12132,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @491
-			    Parent_View 	@490
+			stereotype 	(object SegLabel @564
+			    Parent_View 	@563
 			    location   	(3525, 770)
 			    font       	(object Font
 				size       	9
@@ -10612,13 +12155,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"5703619D00FD"
-			client     	@406
-			supplier   	@436
+			client     	@479
+			supplier   	@509
 			vertices   	(list Points
-			    (3317, 690)
+			    (3389, 753)
 			    (3658, 981))
 			line_style 	0)
-		    (object UseCaseView "Use Case View::填写书评" @492
+		    (object UseCaseView "Use Case View::填写书评" @565
 			location   	(4704, 864)
 			font       	(object Font
 			    size       	9
@@ -10630,7 +12173,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@492
+			    Parent_View 	@565
 			    location   	(4704, 1002)
 			    anchor_loc 	1
 			    nlines     	2
@@ -10642,7 +12185,7 @@
 			fill_color 	13434879
 			quidu      	"570362100333"
 			height     	118)
-		    (object UseCaseView "Use Case View::评分图书" @493
+		    (object UseCaseView "Use Case View::评分图书" @566
 			location   	(4704, 1168)
 			font       	(object Font
 			    size       	9
@@ -10654,7 +12197,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@493
+			    Parent_View 	@566
 			    location   	(4704, 1306)
 			    anchor_loc 	1
 			    nlines     	2
@@ -10666,7 +12209,7 @@
 			fill_color 	13434879
 			quidu      	"5703623B0032"
 			height     	118)
-		    (object UseCaseView "Use Case View::查看借阅图书" @494
+		    (object UseCaseView "Use Case View::查看借阅图书" @567
 			location   	(4080, 1264)
 			font       	(object Font
 			    size       	9
@@ -10678,7 +12221,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@494
+			    Parent_View 	@567
 			    location   	(4080, 1402)
 			    anchor_loc 	1
 			    nlines     	2
@@ -10690,7 +12233,7 @@
 			fill_color 	13434879
 			quidu      	"5703625D01EA"
 			height     	118)
-		    (object NoteView @495
+		    (object NoteView @568
 			location   	(4128, 912)
 			font       	(object Font
 			    size       	9
@@ -10702,7 +12245,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@495
+			    Parent_View 	@568
 			    location   	(3990, 852)
 			    fill_color 	13434879
 			    nlines     	2
@@ -10713,16 +12256,16 @@
 			fill_color 	13434879
 			width      	300
 			height     	132)
-		    (object AttachView "" @496
+		    (object AttachView "" @569
 			stereotype 	TRUE
 			line_color 	3342489
-			client     	@495
-			supplier   	@494
+			client     	@568
+			supplier   	@567
 			vertices   	(list Points
 			    (4119, 978)
 			    (4084, 1205))
 			line_style 	0)
-		    (object DependencyView "" @497
+		    (object DependencyView "" @570
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -10732,8 +12275,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @498
-			    Parent_View 	@497
+			stereotype 	(object SegLabel @571
+			    Parent_View 	@570
 			    location   	(3781, 1422)
 			    font       	(object Font
 				size       	9
@@ -10755,13 +12298,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"57036291022B"
-			client     	@386
-			supplier   	@494
+			client     	@459
+			supplier   	@567
 			vertices   	(list Points
 			    (3794, 1494)
-			    (3962, 1360))
+			    (3884, 1425))
 			line_style 	0)
-		    (object DependencyView "" @499
+		    (object DependencyView "" @572
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -10771,8 +12314,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @500
-			    Parent_View 	@499
+			stereotype 	(object SegLabel @573
+			    Parent_View 	@572
 			    location   	(4329, 1045)
 			    font       	(object Font
 				size       	9
@@ -10794,13 +12337,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"5703629D00AB"
-			client     	@494
-			supplier   	@492
+			client     	@567
+			supplier   	@565
 			vertices   	(list Points
 			    (4164, 1206)
-			    (4608, 920))
+			    (4451, 1025))
 			line_style 	0)
-		    (object DependencyView "" @501
+		    (object DependencyView "" @574
 			font       	(object Font
 			    size       	9
 			    face       	"Arial"
@@ -10810,8 +12353,8 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			stereotype 	(object SegLabel @502
-			    Parent_View 	@501
+			stereotype 	(object SegLabel @575
+			    Parent_View 	@574
 			    location   	(4357, 1176)
 			    font       	(object Font
 				size       	9
@@ -10833,13 +12376,13 @@
 			    orientation 	0)
 			line_color 	3342489
 			quidu      	"570362A0020E"
-			client     	@494
-			supplier   	@493
+			client     	@567
+			supplier   	@566
 			vertices   	(list Points
 			    (4188, 1245)
 			    (4594, 1183))
 			line_style 	0)
-		    (object NoteView @503
+		    (object NoteView @576
 			location   	(2192, 1936)
 			font       	(object Font
 			    size       	9
@@ -10851,7 +12394,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@503
+			    Parent_View 	@576
 			    location   	(2054, 1876)
 			    fill_color 	13434879
 			    nlines     	2
@@ -10862,14 +12405,77 @@
 			fill_color 	13434879
 			width      	300
 			height     	132)
-		    (object AttachView "" @504
+		    (object AttachView "" @577
 			stereotype 	TRUE
 			line_color 	3342489
-			client     	@453
-			supplier   	@503
+			client     	@526
+			supplier   	@576
 			vertices   	(list Points
 			    (1900, 1863)
 			    (2041, 1899))
+			line_style 	0)
+		    (object UseCaseView "Use Case View::自动催还图书" @578
+			location   	(3744, 592)
+			font       	(object Font
+			    size       	9
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@578
+			    location   	(3744, 730)
+			    anchor_loc 	1
+			    nlines     	2
+			    max_width  	630
+			    justify    	0
+			    label      	"自动催还图书")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5731EBBE01A3"
+			height     	118)
+		    (object DependencyView "" @579
+			font       	(object Font
+			    size       	9
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	(object SegLabel @580
+			    Parent_View 	@579
+			    location   	(3471, 485)
+			    font       	(object Font
+				size       	9
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    anchor     	10
+			    anchor_loc 	1
+			    nlines     	1
+			    max_width  	450
+			    justify    	0
+			    label      	"<<include>>"
+			    pctDist    	0.500000
+			    height     	108
+			    orientation 	0)
+			line_color 	3342489
+			quidu      	"5731EBCE0236"
+			client     	@479
+			supplier   	@578
+			vertices   	(list Points
+			    (3308, 592)
+			    (3634, 592))
 			line_style 	0)))))
     root_category 	(object Class_Category "Logical View"
 	quid       	"34DBB4830141"
@@ -11017,16 +12623,16 @@
 			
 			exportControl 	"Public"
 			logical_models 	(list unit_reference_list
-			    (object Association "$UNNAMED$110"
+			    (object Association "$UNNAMED$124"
 				quid       	"35409E9D02A8"
 				stereotype 	"realize"
 				roles      	(list role_list
-				    (object Role "$UNNAMED$111"
+				    (object Role "$UNNAMED$125"
 					quid       	"35409E9E0294"
 					supplier   	"::Use-Case Model::Use Cases::<Use Case Name>::<Use Case Name>"
 					quidu      	"34E37FB203D4"
 					is_navigable 	TRUE)
-				    (object Role "$UNNAMED$112"
+				    (object Role "$UNNAMED$126"
 					quid       	"35409E9E0295"
 					supplier   	"Logical View::Design Model::Use-Case Realizations::<Use-Case Name>::<Use-Case Name>"
 					quidu      	"352F38180276")))
@@ -11043,9 +12649,9 @@
 					
 					stereotype 	"use-case realization"
 					logical_models 	(list unit_reference_list
-					    (object Mechanism @505
+					    (object Mechanism @581
 						logical_models 	(list unit_reference_list))
-					    (object Mechanism @506
+					    (object Mechanism @582
 						logical_models 	(list unit_reference_list)))
 					logical_presentations 	(list unit_reference_list
 					    (object ClassDiagram "<Use Case Name> -  Realize Dependencies"
@@ -11069,7 +12675,7 @@
 						origin_y   	0
 						items      	(list diagram_item_list))
 					    (object InteractionDiagram "<Use Case Name> -  Basic Flow"
-						mechanism_ref 	@505
+						mechanism_ref 	@581
 						quid       	"35081E3603A2"
 						title      	"<Use Case Name> -  Basic Flow"
 						zoom       	100
@@ -11079,7 +12685,7 @@
 						origin_y   	0
 						items      	(list diagram_item_list))
 					    (object InteractionDiagram "<Use Case Name> -  <Flow Type>"
-						mechanism_ref 	@506
+						mechanism_ref 	@582
 						quid       	"3540A0B901AE"
 						title      	"<Use Case Name> -  <Flow Type>"
 						zoom       	100
@@ -11099,7 +12705,7 @@
 					origin_x   	0
 					origin_y   	0
 					items      	(list diagram_item_list
-					    (object NoteView @507
+					    (object NoteView @583
 						location   	(704, 144)
 						font       	(object Font
 						    size       	9
@@ -11111,7 +12717,7 @@
 						    color      	0
 						    default_color 	TRUE)
 						label      	(object ItemLabel
-						    Parent_View 	@507
+						    Parent_View 	@583
 						    location   	(38, 25)
 						    fill_color 	13434879
 						    nlines     	5
@@ -11125,7 +12731,7 @@
 						fill_color 	13434879
 						width      	1356
 						height     	250)
-					    (object UseCaseView "Logical View::Design Model::Use-Case Realizations::<Use-Case Name>::<Use-Case Name>" @508
+					    (object UseCaseView "Logical View::Design Model::Use-Case Realizations::<Use-Case Name>::<Use-Case Name>" @584
 						location   	(608, 960)
 						font       	(object Font
 						    size       	9
@@ -11137,7 +12743,7 @@
 						    color      	0
 						    default_color 	TRUE)
 						label      	(object ItemLabel
-						    Parent_View 	@508
+						    Parent_View 	@584
 						    location   	(608, 1148)
 						    anchor_loc 	1
 						    nlines     	2
@@ -11145,7 +12751,7 @@
 						    justify    	0
 						    label      	"<Use-Case Name>")
 						stereotype 	(object ItemLabel
-						    Parent_View 	@508
+						    Parent_View 	@584
 						    location   	(608, 1078)
 						    anchor     	10
 						    anchor_loc 	1
@@ -11173,16 +12779,16 @@
 				quid       	"35DB3CB002BC"
 				documentation 	"This is a sub-process or thread within the <name of process of which this thread is a sub-process> process which handles <enter a description of what this thread does>.  A separate thread was chosen for this to be able to <enter the rationale for creating a separate thread>."
 				stereotype 	"thread")
-			    (object Association "$UNNAMED$113"
+			    (object Association "$UNNAMED$127"
 				quid       	"35DB3E72017C"
 				roles      	(list role_list
-				    (object Role "$UNNAMED$114"
+				    (object Role "$UNNAMED$128"
 					quid       	"35DB3E73005A"
 					supplier   	"Logical View::Design Model::Process View::<Process Name>"
 					quidu      	"35DB3C8302D0"
 					is_navigable 	TRUE
 					is_aggregate 	TRUE)
-				    (object Role "$UNNAMED$115"
+				    (object Role "$UNNAMED$129"
 					quid       	"35DB3E730096"
 					supplier   	"Logical View::Design Model::Process View::<Thread Name>"
 					quidu      	"35DB3CB002BC"
@@ -11199,7 +12805,7 @@
 				origin_x   	0
 				origin_y   	0
 				items      	(list diagram_item_list
-				    (object ClassView "Class" "Logical View::Design Model::Process View::<Process Name>" @509
+				    (object ClassView "Class" "Logical View::Design Model::Process View::<Process Name>" @585
 					ShowCompartmentStereotypes 	TRUE
 					IncludeAttribute 	TRUE
 					IncludeOperation 	TRUE
@@ -11214,7 +12820,7 @@
 					    color      	0
 					    default_color 	TRUE)
 					label      	(object ItemLabel
-					    Parent_View 	@509
+					    Parent_View 	@585
 					    location   	(122, 436)
 					    fill_color 	13434879
 					    nlines     	1
@@ -11222,7 +12828,7 @@
 					    justify    	0
 					    label      	"<Process Name>")
 					stereotype 	(object ItemLabel
-					    Parent_View 	@509
+					    Parent_View 	@585
 					    location   	(122, 389)
 					    fill_color 	13434879
 					    anchor     	10
@@ -11238,7 +12844,7 @@
 					height     	172
 					annotation 	8
 					autoResize 	TRUE)
-				    (object ClassView "Class" "Logical View::Design Model::Process View::<Thread Name>" @510
+				    (object ClassView "Class" "Logical View::Design Model::Process View::<Thread Name>" @586
 					ShowCompartmentStereotypes 	TRUE
 					IncludeAttribute 	TRUE
 					IncludeOperation 	TRUE
@@ -11253,7 +12859,7 @@
 					    color      	0
 					    default_color 	TRUE)
 					label      	(object ItemLabel
-					    Parent_View 	@510
+					    Parent_View 	@586
 					    location   	(740, 436)
 					    fill_color 	13434879
 					    nlines     	1
@@ -11261,7 +12867,7 @@
 					    justify    	0
 					    label      	"<Thread Name>")
 					stereotype 	(object ItemLabel
-					    Parent_View 	@510
+					    Parent_View 	@586
 					    location   	(740, 389)
 					    fill_color 	13434879
 					    anchor     	10
@@ -11277,32 +12883,32 @@
 					height     	172
 					annotation 	8
 					autoResize 	TRUE)
-				    (object AssociationViewNew "$UNNAMED$113" @511
+				    (object AssociationViewNew "$UNNAMED$127" @587
 					location   	(596, 464)
 					stereotype 	TRUE
 					line_color 	3342489
 					quidu      	"35DB3E72017C"
 					roleview_list 	(list RoleViews
-					    (object RoleView "$UNNAMED$114" @512
-						Parent_View 	@511
+					    (object RoleView "$UNNAMED$128" @588
+						Parent_View 	@587
 						location   	(-300, 0)
 						stereotype 	TRUE
 						line_color 	3342489
 						quidu      	"35DB3E73005A"
-						client     	@511
-						supplier   	@509
+						client     	@587
+						supplier   	@585
 						vertices   	(list Points
 						    (596, 464)
 						    (463, 464))
 						line_style 	0)
-					    (object RoleView "$UNNAMED$115" @513
-						Parent_View 	@511
+					    (object RoleView "$UNNAMED$129" @589
+						Parent_View 	@587
 						location   	(-300, 0)
 						stereotype 	TRUE
 						line_color 	3342489
 						quidu      	"35DB3E730096"
-						client     	@511
-						supplier   	@510
+						client     	@587
+						supplier   	@586
 						vertices   	(list Points
 						    (596, 464)
 						    (730, 464))
@@ -11318,7 +12924,7 @@
 			origin_x   	0
 			origin_y   	0
 			items      	(list diagram_item_list
-			    (object NoteView @514
+			    (object NoteView @590
 				location   	(672, 304)
 				font       	(object Font
 				    size       	9
@@ -11330,7 +12936,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@514
+				    Parent_View 	@590
 				    location   	(28, 19)
 				    fill_color 	13434879
 				    nlines     	13
@@ -11354,7 +12960,7 @@
 				fill_color 	13434879
 				width      	1313
 				height     	582)
-			    (object NoteView @515
+			    (object NoteView @591
 				location   	(1696, 160)
 				font       	(object Font
 				    size       	9
@@ -11366,7 +12972,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@515
+				    Parent_View 	@591
 				    location   	(1358, 29)
 				    fill_color 	13434879
 				    nlines     	5
@@ -11402,7 +13008,7 @@
 			origin_x   	0
 			origin_y   	0
 			items      	(list diagram_item_list
-			    (object NoteView @516
+			    (object NoteView @592
 				location   	(576, 256)
 				font       	(object Font
 				    size       	9
@@ -11414,7 +13020,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@516
+				    Parent_View 	@592
 				    location   	(44, 31)
 				    fill_color 	13434879
 				    nlines     	9
@@ -11434,7 +13040,7 @@
 				fill_color 	13434879
 				width      	1088
 				height     	463)
-			    (object NoteView @517
+			    (object NoteView @593
 				location   	(1520, 176)
 				font       	(object Font
 				    size       	9
@@ -11446,7 +13052,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@517
+				    Parent_View 	@593
 				    location   	(1182, 45)
 				    fill_color 	13434879
 				    nlines     	5
@@ -11484,7 +13090,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object NoteView @518
+		    (object NoteView @594
 			location   	(768, 384)
 			font       	(object Font
 			    size       	9
@@ -11496,7 +13102,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@518
+			    Parent_View 	@594
 			    location   	(121, 96)
 			    fill_color 	13434879
 			    nlines     	14
@@ -11556,7 +13162,7 @@
 			origin_x   	0
 			origin_y   	0
 			items      	(list diagram_item_list
-			    (object NoteView @519
+			    (object NoteView @595
 				location   	(624, 160)
 				font       	(object Font
 				    size       	9
@@ -11568,7 +13174,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@519
+				    Parent_View 	@595
 				    location   	(21, 26)
 				    fill_color 	13434879
 				    nlines     	5
@@ -11595,7 +13201,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object SubSysView "Component View::Implementation Model" @520
+		    (object SubSysView "Component View::Implementation Model" @596
 			location   	(736, 800)
 			font       	(object Font
 			    size       	9
@@ -11607,7 +13213,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@520
+			    Parent_View 	@596
 			    location   	(552, 713)
 			    fill_color 	13434879
 			    nlines     	2
@@ -11670,7 +13276,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object ProcessorView "<processor name>" @521
+		    (object ProcessorView "<processor name>" @597
 			location   	(512, 1056)
 			font       	(object Font
 			    size       	9
@@ -11682,7 +13288,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@521
+			    Parent_View 	@597
 			    location   	(276, 900)
 			    nlines     	2
 			    max_width  	400
@@ -11693,7 +13299,7 @@
 			width      	475
 			height     	381
 			annotation 	3)
-		    (object DeviceView "<device name>" @522
+		    (object DeviceView "<device name>" @598
 			location   	(1040, 1056)
 			font       	(object Font
 			    size       	9
@@ -11705,7 +13311,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@522
+			    Parent_View 	@598
 			    location   	(867, 950)
 			    nlines     	2
 			    max_width  	275
@@ -11716,16 +13322,16 @@
 			width      	350
 			height     	282
 			annotation 	0)
-		    (object ConnectionView "" @523
+		    (object ConnectionView "" @599
 			stereotype 	TRUE
 			quidu      	"34DBBD4B008C"
-			client     	@521
-			supplier   	@522
+			client     	@597
+			supplier   	@598
 			vertices   	(list Points
 			    (718, 1056)
 			    (865, 1056))
 			line_style 	0)
-		    (object NoteView @524
+		    (object NoteView @600
 			location   	(816, 304)
 			font       	(object Font
 			    size       	9
@@ -11737,7 +13343,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@524
+			    Parent_View 	@600
 			    location   	(38, 29)
 			    fill_color 	13434879
 			    nlines     	11
@@ -15098,7 +16704,7 @@
 		    (object Attribute
 			tool       	"Java"
 			name       	"ClassPath"
-			value      	"")
+			value      	".;C:\\Program Files\\Java\\jdk1.6.0_21\\lib;C:\\Program Files\\Java\\jdk1.6.0_21\\lib\\tools.jar;;C:\\Program Files\\Java\\jdk1.6.0_21\\jre\\lib\\rt.jar;C:\\Program Files\\Java\\jdk1.6.0_21\\lib\\dt.jar")
 		    (object Attribute
 			tool       	"Java"
 			name       	"EditorType"
